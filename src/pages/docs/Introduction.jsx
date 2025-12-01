@@ -6,6 +6,25 @@ export default function Introduction() {
         Pytron is a modern, lightweight framework for building desktop applications using Python for the backend and web technologies for the frontend.
         It bridges the gap between the powerful Python ecosystem and the rich user interfaces of the modern web.
       </p>
+      <h2>Installation</h2>
+      <p>
+        Getting started with Pytron is easy. You can install it via pip:
+      </p>
+      <div style={{ margin: '2rem 0' }}>
+        <code style={{ 
+          background: 'rgba(0,0,0,0.3)', 
+          padding: '1rem 2rem', 
+          borderRadius: '0.5rem', 
+          fontSize: '1.1rem',
+          border: '1px solid var(--border-color)',
+          fontFamily: 'monospace',
+          color: 'var(--primary-color)',
+          display: 'block',
+          width: 'fit-content'
+        }}>
+          pip install pytron-kit
+        </code>
+      </div>
 
       <h2>Why Pytron?</h2>
       <p>

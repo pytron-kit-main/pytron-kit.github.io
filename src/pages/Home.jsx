@@ -28,6 +28,21 @@ export default function Home() {
               The modern, lightweight framework for Python developers. 
               No sockets, no bloat, just pure performance.
             </p>
+
+            <div style={{ marginBottom: '2.5rem' }}>
+              <code style={{ 
+                background: 'rgba(0,0,0,0.3)', 
+                padding: '1rem 2rem', 
+                borderRadius: '0.5rem', 
+                fontSize: '1.2rem',
+                border: '1px solid var(--border-color)',
+                fontFamily: 'monospace',
+                color: 'var(--primary-color)'
+              }}>
+                pip install pytron-kit
+              </code>
+            </div>
+
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
               <Link to="/docs" className="btn btn-primary" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
                 Get Started <ArrowRight size={20} />
