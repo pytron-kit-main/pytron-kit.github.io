@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Docs from './pages/Docs';
 import Examples from './pages/Examples';
@@ -15,6 +16,7 @@ function App() {
           <Route path="/docs/*" element={<Docs />} />
           <Route path="/examples" element={<Examples />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

@@ -5,6 +5,7 @@ const links = [
   { title: 'Architecture', path: '/docs/architecture' },
   { title: 'Core Features', path: '/docs/features' },
   { title: 'CLI & Tools', path: '/docs/cli' },
+  { title: 'Dependency Management', path: '/docs/dependency-management' },
   { title: 'Ecosystem', path: '/docs/ecosystem' },
   { title: 'Comparison', path: '/docs/comparison' },
 ];

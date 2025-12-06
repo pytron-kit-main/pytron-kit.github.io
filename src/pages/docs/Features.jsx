@@ -15,6 +15,12 @@ pytron run --dev
 # [Pytron] Watching for file changes...
 # [Pytron] Restarting app...`}</code></pre>
 
+      <h2>Blazing Fast</h2>
+      <p>
+        Pytron is tuned for speed — fast startup, optimized bundling, and a lightweight runtime so your
+        apps run with minimal overhead in both development and production.
+      </p>
+
       <h2>Native Packaging (NSIS)</h2>
       <p>
         Distributing your app is just one command away. Pytron uses <strong>PyInstaller</strong> for bundling the executable 
@@ -30,6 +36,18 @@ pytron run --dev
       </ul>
 
       <pre><code>{`pytron package --installer`}</code></pre>
+
+      <h2>Dependency Management</h2>
+      <p>
+        Manage dependencies with <code>pytron install</code>. Run it with a package name to install a
+        single dependency into Pytron's venv, or run it with no arguments to install packages from
+        a <code>requirements.json</code> file in your project root.
+      </p>
+      <pre><code>{`# Install a single package
+    pytron install numpy
+
+    # Or install from requirements.json
+    pytron install`}</code></pre>
 
       <h2>Type-Safe Bridge</h2>
       <p>

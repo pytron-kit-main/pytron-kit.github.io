@@ -8,6 +8,7 @@ import Features from './docs/Features';
 import CLI from './docs/CLI';
 import Ecosystem from './docs/Ecosystem';
 import Comparison from './docs/Comparison';
+import DependencyManagement from './docs/DependencyManagement';
 
 export default function Docs() {
   return (
@@ -19,6 +20,7 @@ export default function Docs() {
           <Route path="/architecture" element={<Architecture />} />
           <Route path="/features" element={<Features />} />
           <Route path="/cli" element={<CLI />} />
+          <Route path="/dependency-management" element={<DependencyManagement />} />
           <Route path="/ecosystem" element={<Ecosystem />} />
           <Route path="/comparison" element={<Comparison />} />
           <Route path="*" element={<Navigate to="/docs" replace />} />

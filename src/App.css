@@ -187,3 +187,111 @@ code {
     padding: 2rem;
   }
 }
+
+/* Footer styles inspired by the provided layout */
+.site-footer {
+  background: var(--bg-color);
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+  margin-top: 2.5rem;
+}
+.site-footer .footer-top {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 3.5rem 2rem;
+}
+.site-footer .footer-left {
+  max-width: 420px;
+}
+.footer-brand {
+  font-size: 1.25rem;
+  letter-spacing: 0.25em;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.footer-nav a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  opacity: 0.95;
+}
+.site-footer .footer-right h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.footer-signup {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.footer-signup input[type="email"] {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--text-primary);
+  width: 320px;
+  max-width: 50vw;
+  font-size: 0.95rem;
+}
+.site-footer .btn.btn-primary {
+  background: var(--primary-color);
+  color: #ffffff;
+  box-shadow: none;
+  padding: 0.65rem 1rem;
+}
+.footer-middle {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-color);
+}
+.footer-links-row {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.footer-links-row a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+.footer-bottom {
+  text-align: center;
+  padding: 1.25rem 2rem 3rem 2rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Align footer content with docs/sidebar when wide */
+@media (min-width: 769px) {
+  .site-footer .container {
+    margin-left: var(--sidebar-width);
+    max-width: calc(1200px - var(--sidebar-width));
+  }
+}
+
+@media (max-width: 900px) {
+  .site-footer .footer-top {
+    flex-direction: column-reverse;
+    gap: 2rem;
+  }
+  .footer-signup input[type="email"] {
+    width: 100%;
+    max-width: none;
+  }
+  .footer-right {
+    width: 100%;
+  }
+}
