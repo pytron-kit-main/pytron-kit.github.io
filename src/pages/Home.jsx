@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Box, Layers, Terminal } from 'lucide-react';
+import { ArrowRight, Zap, Box, Layers, Terminal, Package } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -55,6 +55,8 @@ export default function Home() {
         </div>
       </section>
 
+      
+
       {/* Features Grid */}
       <section className="container" style={{ paddingBottom: '6rem' }}>
         <div style={{ 
@@ -71,6 +73,11 @@ export default function Home() {
             icon={<Box color="var(--primary-color)" />}
             title="Native Packaging"
             desc="Built-in NSIS installer support and Manifest management for full UTF-8 compatibility."
+          />
+          <FeatureCard 
+            icon={<Package color="#06b6d4" />}
+            title="Dependency Management"
+            desc="Manage project packages with  simply with `pytron install` ,python dependencies made easy."
           />
           <FeatureCard 
             icon={<Layers color="#a855f7" />}
