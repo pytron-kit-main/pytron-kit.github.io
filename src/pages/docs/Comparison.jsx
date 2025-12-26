@@ -28,13 +28,13 @@ export default function Comparison() {
           </tr>
           <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
             <td style={{ padding: '1rem' }}><strong>Binary Size</strong></td>
-            <td style={{ padding: '1rem', color: 'var(--primary-color)' }}>Small (~15MB*)</td>
+            <td style={{ padding: '1rem', color: 'var(--primary-color)' }}>Small (~30MB*)</td>
             <td style={{ padding: '1rem' }}>Large (100MB+)</td>
             <td style={{ padding: '1rem' }}>Tiny (~3MB)</td>
           </tr>
           <tr style={{ borderBottom: '1px solid var(--border-color)' }}>
             <td style={{ padding: '1rem' }}><strong>Communication</strong></td>
-            <td style={{ padding: '1rem' }}>Direct Bridge (No HTTP)</td>
+            <td style={{ padding: '1rem' }}>IPC</td>
             <td style={{ padding: '1rem' }}>IPC</td>
             <td style={{ padding: '1rem' }}>IPC</td>
           </tr>

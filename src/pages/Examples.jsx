@@ -11,12 +11,24 @@ export default function Examples() {
         </p>
       </div>
 
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', 
-        gap: '2rem' 
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
+        gap: '2rem'
       }}>
-        <ExampleCard 
+        <ExampleCard
+          title="Agentic"
+          description="The Ultimate Desktop AI Assistant. A local-first powerhouse with 70+ tools, deep system integration, and a stunning glassmorphism UI. Built on Pytron-Kit."
+          tags={['AI', 'LLM', 'React', 'Ollama']}
+          repoUrl="https://ghua8088.github.io/Agentic/"
+          icon={`${import.meta.env.BASE_URL}examples/Agentic/logo.png`}
+          image={`${import.meta.env.BASE_URL}examples/Agentic/screenshot.png`}
+          featured={true}
+          buttonText="Visit Project"
+          buttonIcon={<ExternalLink size={18} />}
+        />
+
+        <ExampleCard
           title="PyDash"
           description="A modern, matte-black system monitor and task manager. Features real-time graphs, process management, and a custom frameless window."
           tags={['React', 'System Monitor', 'Real-time']}
@@ -26,7 +38,7 @@ export default function Examples() {
           featured={true}
         />
 
-        <ExampleCard 
+        <ExampleCard
           title="TerminateCode"
           description="An experimental, lightweight IDE built with Pytron. Features Monaco Editor, file system operations, and a VS Code-like experience."
           tags={['React', 'Monaco Editor', 'IDE']}
@@ -36,7 +48,7 @@ export default function Examples() {
           featured={true}
         />
 
-        <ExampleCard 
+        <ExampleCard
           title="Pytron Task Manager"
           description="A full-featured Todo application with categories, persistence, and native window controls. Showcases CRUD operations and state management."
           tags={['React', 'SQLite', 'CRUD']}
@@ -48,13 +60,13 @@ export default function Examples() {
   );
 }
 
-function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, image, featured }) {
+function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, image, featured, buttonText = "View Source", buttonIcon = <Github size={18} /> }) {
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ y: -5 }}
-      style={{ 
-        background: 'var(--surface-color)', 
-        borderRadius: '1rem', 
+      style={{
+        background: 'var(--surface-color)',
+        borderRadius: '1rem',
         border: featured ? '1px solid var(--primary-color)' : '1px solid var(--border-color)',
         overflow: 'hidden',
         display: 'flex',
@@ -84,7 +96,7 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
           <img src={image} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
       )}
-      
+
       <div style={{ padding: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
           {icon ? (
@@ -94,14 +106,14 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
           )}
           <h3 style={{ fontSize: '1.5rem', margin: 0 }}>{title}</h3>
         </div>
-        
+
         <p style={{ marginBottom: '1.5rem', minHeight: '3rem', color: 'var(--text-secondary)' }}>{description}</p>
-        
+
         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
           {tags.map(tag => (
-            <span key={tag} style={{ 
-              background: 'rgba(255,255,255,0.05)', 
-              padding: '0.25rem 0.75rem', 
+            <span key={tag} style={{
+              background: 'rgba(255,255,255,0.05)',
+              padding: '0.25rem 0.75rem',
               borderRadius: '1rem',
               fontSize: '0.85rem',
               color: 'var(--text-secondary)'
@@ -111,14 +123,14 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
           ))}
         </div>
 
-        <a 
-          href={repoUrl} 
-          target="_blank" 
+        <a
+          href={repoUrl}
+          target="_blank"
           rel="noopener noreferrer"
           className="btn btn-secondary"
           style={{ width: '100%', justifyContent: 'center' }}
         >
-          <Github size={18} /> View Source
+          {buttonIcon} {buttonText}
         </a>
       </div>
     </motion.div>

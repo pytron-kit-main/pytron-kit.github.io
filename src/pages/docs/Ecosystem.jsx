@@ -1,48 +1,74 @@
+import { ExternalLink } from 'lucide-react';
+
 export default function Ecosystem() {
   return (
     <div className="prose">
       <h1>Ecosystem</h1>
       <p>
-        Pytron isn't just a backend library; it's a full stack solution with dedicated NPM packages 
-        to make frontend integration seamless.
+        Pytron is more than just a backend library. It is supported by a growing ecosystem of tools designed to make the bridge between Python and Web technologies seamless and professional.
       </p>
 
-      <h2>pytron-client</h2>
-      <p>
-        The core client library for communicating with the Python backend.
-      </p>
-      <pre><code>{`npm install pytron-client`}</code></pre>
-      
-      <pre><code>{`import pytron from 'pytron-client';
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <a href="https://www.npmjs.com/package/pytron-client" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+            pytron-client
+          </a>
+          <ExternalLink size={18} style={{ color: 'var(--primary-color)' }} />
+        </h2>
+        <p>
+          The core JavaScript bridge. It abstracts the IPC communication into direct, promise-based function calls. It also handles state synchronization and backend events.
+        </p>
+        <pre><code className="language-bash">{`npm install pytron-client`}</code></pre>
 
-// Call Python functions
-const result = await pytron.my_python_function();
+        <pre><code className="language-javascript">{`import pytron from 'pytron-client';
 
-// Listen to events
-pytron.on('update', (data) => {
-  console.log('Received update:', data);
-});`}</code></pre>
+// Call exposed Python functions
+const result = await pytron.get_system_info();
 
-      <h2>pytron-UI</h2>
-      <p>
-        A set of pre-built, native-feeling UI components designed to work perfectly with Pytron apps.
-      </p>
-      <pre><code>{`npm install pytron-ui`}</code></pre>
+// Listen to backend events
+pytron.on('download:progress', (percent) => {
+  console.log(\`Progress: \${percent}%\`);
+});
 
-      <pre><code>{`import { WindowControls, Button } from 'pytron-ui';
+// Access globally synced state
+console.log(pytron.state.user);`}</code></pre>
+      </div>
+
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <a href="https://www.npmjs.com/package/pytron-ui" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+            pytron-ui
+          </a>
+          <ExternalLink size={18} style={{ color: 'var(--primary-color)' }} />
+        </h2>
+        <p>
+          A professional-grade component library for React. It provides native-feeling desktop building blocks like draggable TitleBars, Sidebars, and specialized hooks and many more UI components, also contains components written in Lit for web components.
+        </p>
+        <pre><code className="language-bash">{`npm install pytron-ui`}</code></pre>
+
+        <pre><code className="language-jsx">{`import { PytronTitleBar,PytronMenuBar PytronSidebar, usePytron } from 'pytron-ui';
 
 function App() {
+  const { state, isLoading } = usePytron();
+
   return (
-    <div>
-      {/* Native-like window controls (Minimize, Maximize, Close) */}
-      <WindowControls />
+          <>
+      {/* Draggable region with native window buttons */}
+      <PytronTitleBar title="My App" variant="windows">
+            {/*add child elements to title bar*/}
+      </PytronTitleBar>
       
-      <Button onClick={() => pytron.do_something()}>
-        Click Me
-      </Button>
-    </div>
+      <PytronSidebar>
+        <PytronSidebar.Item active>Dashboard</PytronSidebar.Item>
+      </PytronSidebar>
+
+      <main>
+        <h1>Welcome, {state.user}</h1>
+      </main>
+      </>
   );
 }`}</code></pre>
+      </div>
     </div>
   );
 }

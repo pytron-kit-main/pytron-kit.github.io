@@ -2,58 +2,88 @@ export default function Features() {
   return (
     <div className="prose">
       <h1>Core Features</h1>
-
-      <h2>Hot Reloading with Watchgod</h2>
       <p>
-        Development speed matters. Pytron integrates <strong>watchgod</strong> to monitor your Python files. 
-        When you save a change in your backend code, Pytron instantly restarts the application process, 
-        keeping your development flow uninterrupted.
-      </p>
-      <pre><code>{`# Run in development mode
-pytron run --dev
-
-# [Pytron] Watching for file changes...
-# [Pytron] Restarting app...`}</code></pre>
-
-      <h2>Blazing Fast</h2>
-      <p>
-        Pytron is tuned for speed — fast startup, optimized bundling, and a lightweight runtime so your
-        apps run with minimal overhead in both development and production.
+        Pytron is more than just a webview wrapper. It is a full-stack ecosystem composed of three synchronized pillars that make desktop development feel like magic.
       </p>
 
-      <h2>Native Packaging (NSIS)</h2>
+      <h2>1. Pytron Kit (The Backend)</h2>
       <p>
-        Distributing your app is just one command away. Pytron uses <strong>PyInstaller</strong> for bundling the executable 
-        and <strong>NSIS (Nullsoft Scriptable Install System)</strong> to create professional Windows installers.
-      </p>
-      <p>
-        It automatically generates an installer that:
+        The heart of your application. Written in Python, it manages your window, manages your rendering engine (Native or PySide6), and handles your business logic.
       </p>
       <ul>
-        <li>Installs your app to Program Files</li>
-        <li>Creates Start Menu shortcuts</li>
-        <li>Provides an uninstaller</li>
+        <li><strong>@app.expose:</strong> Effortlessly expose Python functions to JavaScript.</li>
+        <li><strong>Reactive State:</strong> Change a variable in Python, and your UI re-renders automatically.</li>
+        <li><strong>Native API:</strong> Direct access to the filesystem, system tray, and OS-level features.</li>
       </ul>
+      <pre><code className="language-python">{`from pytron import App
+app = App()
 
+@app.expose
+def get_data():
+    return {"status": "success", "value": 42}
+
+app.run()`}</code></pre>
+
+      <h2>2. Pytron Client (The Bridge)</h2>
+      <p>
+        A lightweight JavaScript library that connects your frontend (React, Vue, Svelte) to your Python backend. It abstracts IPC into clean, promise-based calls.
+      </p>
+      <ul>
+        <li><strong>Transparent RPC:</strong> Call Python functions as if they were local JS functions.</li>
+        <li><strong>Typed Definitions:</strong> Automatically generated TypeScript types for your Python API.</li>
+        <li><strong>Event Streaming:</strong> Push data from Python to JS in real-time.</li>
+      </ul>
+      <pre><code className="language-javascript">{`import pytron from 'pytron-client';
+
+// Call exposed Python function
+const data = await pytron.get_data();
+
+// Listen for backend events
+pytron.on('status-update', (msg) => {
+  console.log(msg);
+});`}</code></pre>
+
+      <h2>3. Pytron UI (The Presentation)</h2>
+      <p>
+        A professional component library designed to make web apps feel native. Stop building websites in windows; start building desktop software.
+      </p>
+      <ul>
+        <li><strong>Custom TitleBars:</strong> Implement draggable, frameless window headers with ease.</li>
+        <li><strong>System Dialogs:</strong> Native-feeling file pickers and message boxes.</li>
+        <li><strong>Desktop Paradigms:</strong> Components built for mouse interaction, sidebars, and multi-paned layouts.</li>
+      </ul>
+      <pre><code className="language-jsx">{`import { TitleBar, Sidebar, AppContainer } from 'pytron-ui';
+
+function App() {
+  return (
+    <AppContainer>
+      <TitleBar title="My Pytron App" />
+      <Sidebar items={['Home', 'Settings']} />
+      <Dashboard />
+    </AppContainer>
+  );
+}`}</code></pre>
+
+      <hr style={{ margin: '4rem 0' }} />
+
+      <h1>The Developer Experience</h1>
+
+      <h2>System Health (Pytron Doctor)</h2>
+      <p>
+        Building desktop apps requires many tools (Node, Python, SDKs). Our <code>doctor</code> command ensures your environment is perfectly configured.
+      </p>
+      <pre><code>{`pytron doctor`}</code></pre>
+
+      <h2>Professional Rendering Engines</h2>
+      <p>
+        Pytron focuses on two high-performance rendering paths. Use the <strong>Native System Webview</strong> for ultra-lightweight binaries, or <strong>PySide6 (Qt WebEngine)</strong> for advanced window management and commercial-grade stability.
+      </p>
+
+      <h2>Professional Packaging</h2>
+      <p>
+        Package your app for Windows (NSIS), macOS (DMG), or Linux (Deb) with one command. Pytron handles the complexity of manifests, icons, and bundling.
+      </p>
       <pre><code>{`pytron package --installer`}</code></pre>
-
-      <h2>Dependency Management</h2>
-      <p>
-        Manage dependencies with <code>pytron install</code>. Run it with a package name to install a
-        single dependency into Pytron's venv, or run it with no arguments to install packages from
-        a <code>requirements.json</code> file in your project root.
-      </p>
-      <pre><code>{`# Install a single package
-    pytron install numpy
-
-    # Or install from requirements.json
-    pytron install`}</code></pre>
-
-      <h2>Type-Safe Bridge</h2>
-      <p>
-        Never guess your API methods again. Pytron can generate TypeScript definitions (`.d.ts`) 
-        from your Python code, giving you full autocomplete and type checking in your frontend IDE.
-      </p>
     </div>
   );
 }

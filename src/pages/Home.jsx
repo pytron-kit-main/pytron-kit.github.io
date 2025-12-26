@@ -6,11 +6,11 @@ export default function Home() {
   return (
     <div className="main-content">
       {/* Hero Section */}
-      <section style={{ 
-        minHeight: '80vh', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
+      <section style={{
+        minHeight: '80vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         textAlign: 'center',
         background: 'radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%)'
       }}>
@@ -25,15 +25,15 @@ export default function Home() {
               with <span style={{ color: 'var(--secondary-color)' }}>Web Tech</span>
             </h1>
             <p style={{ fontSize: '1.5rem', maxWidth: '800px', margin: '0 auto 2.5rem' }}>
-              The modern, lightweight framework for Python developers. 
+              The modern, lightweight framework for Python developers.
               No sockets, no bloat, just pure performance.
             </p>
 
             <div style={{ marginBottom: '2.5rem' }}>
-              <code style={{ 
-                background: 'rgba(0,0,0,0.3)', 
-                padding: '1rem 2rem', 
-                borderRadius: '0.5rem', 
+              <code style={{
+                background: 'rgba(0,0,0,0.3)',
+                padding: '1rem 2rem',
+                borderRadius: '0.5rem',
                 fontSize: '1.2rem',
                 border: '1px solid var(--border-color)',
                 fontFamily: 'monospace',
@@ -55,39 +55,39 @@ export default function Home() {
         </div>
       </section>
 
-      
+
 
       {/* Features Grid */}
       <section className="container" style={{ paddingBottom: '6rem' }}>
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-          gap: '2rem' 
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '2rem'
         }}>
-          <FeatureCard 
+          <FeatureCard
             icon={<Zap color="var(--secondary-color)" />}
             title="Blazing Fast"
-            desc="Uses pywebview with file:// protocol. No HTTP server overhead, no socket issues."
+            desc="Direct bridge communication. Switch between WebView2, CEF, or PySide6 engines instantly."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<Box color="var(--primary-color)" />}
             title="Native Packaging"
-            desc="Built-in NSIS installer support and Manifest management for full UTF-8 compatibility."
+            desc="Professional installers for Windows, macOS, and Linux with full UTF-8 support."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<Package color="#06b6d4" />}
-            title="Dependency Management"
-            desc="Manage project packages with  simply with `pytron install` ,python dependencies made easy."
+            title="Dependency Manager"
+            desc="Automated virtualenv and requirements management via the CLI."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<Layers color="#a855f7" />}
             title="Frontend Agnostic"
-            desc="Works with React, Vue, Svelte, or any other framework. You choose your stack."
+            desc="Works with React, Vue, Svelte, or Next.js. Scaffold any project with a single command."
           />
-          <FeatureCard 
+          <FeatureCard
             icon={<Terminal color="#22c55e" />}
-            title="Elegant CLI"
-            desc="Powerful CLI tools for scaffolding, running, and building your applications."
+            title="Intelligent CLI"
+            desc="Built-in diagnostics with `pytron doctor` and an elegant Rich-powered interface."
           />
         </div>
       </section>
@@ -97,13 +97,13 @@ export default function Home() {
 
 function FeatureCard({ icon, title, desc }) {
   return (
-    <motion.div 
+    <motion.div
       whileHover={{ y: -5 }}
-      style={{ 
-        background: 'var(--surface-color)', 
-        padding: '2rem', 
-        borderRadius: '1rem', 
-        border: '1px solid var(--border-color)' 
+      style={{
+        background: 'var(--surface-color)',
+        padding: '2rem',
+        borderRadius: '1rem',
+        border: '1px solid var(--border-color)'
       }}
     >
       <div style={{ marginBottom: '1rem' }}>{icon}</div>

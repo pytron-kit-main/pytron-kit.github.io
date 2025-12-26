@@ -3,18 +3,18 @@ export default function Introduction() {
     <div className="prose">
       <h1>Introduction to Pytron</h1>
       <p>
-        Pytron is a modern, lightweight framework for building desktop applications using Python for the backend and web technologies for the frontend.
-        It bridges the gap between the powerful Python ecosystem and the rich user interfaces of the modern web.
+        Pytron-Kit is a state-of-the-art, high-performance framework for building cross platform applications using Python for the backend and modern web technologies (React, Vue, Svelte, etc.) for the frontend.
+        It provides a professional developer experience with a focus on speed, small distribution sizes, and cross-platform consistency.
       </p>
-      <h2>Installation</h2>
+      <h2>Quick Start</h2>
       <p>
-        Getting started with Pytron is easy. You can install it via pip:
+        Install the Pytron CLI to start building:
       </p>
       <div style={{ margin: '2rem 0' }}>
-        <code style={{ 
-          background: 'rgba(0,0,0,0.3)', 
-          padding: '1rem 2rem', 
-          borderRadius: '0.5rem', 
+        <code style={{
+          background: 'rgba(0,0,0,0.3)',
+          padding: '1rem 2rem',
+          borderRadius: '0.5rem',
           fontSize: '1.1rem',
           border: '1px solid var(--border-color)',
           fontFamily: 'monospace',
@@ -26,19 +26,20 @@ export default function Introduction() {
         </code>
       </div>
 
-      <h2>Why Pytron?</h2>
-      <p>
-        Unlike other frameworks that bundle a full browser (like Electron) or rely on complex local servers, Pytron takes a different approach.
-        It leverages the system's native webview and communicates directly, offering a smaller footprint and better performance.
-      </p>
+      <h2>The Pytron Advantage</h2>
+      <ul>
+        <li><strong>No Local Server:</strong> No HTTP overhead or port conflicts. Direct bridge communication for maximum security and speed.</li>
+        <li><strong>Native Packaging:</strong> One-command packaging into executables and professional installers (NSIS/DMG/Deb).</li>
+        <li><strong>Modern CLI:</strong> A polished, color-coded CLI with built-in system diagnostics (<code>pytron doctor</code>).</li>
+      </ul>
 
       <div style={{ background: 'rgba(6, 182, 212, 0.1)', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid var(--primary-color)', marginTop: '2rem' }}>
-        <h3 style={{ color: 'var(--primary-color)', marginTop: 0 }}>Check out the Example</h3>
+        <h3 style={{ color: 'var(--primary-color)', marginTop: 0 }}>Built with Pytron</h3>
         <p>
-          See Pytron in action with the <strong>Pytron Task Manager</strong>. A fully functional Todo application showcasing the power of the framework.
+          Experience the flagship: <strong>Agentic</strong>. The ultimate desktop AI assistant with 70+ tools and deep system integration, fully powered by the Pytron-Kit engine.
         </p>
-        <a href="https://github.com/Ghua8088/pytron-task-manager" target="_blank" className="btn btn-primary">
-          View Example Project
+        <a href="https://ghua8088.github.io/Agentic/" target="_blank" className="btn btn-primary">
+          Check out Agentic
         </a>
       </div>
     </div>

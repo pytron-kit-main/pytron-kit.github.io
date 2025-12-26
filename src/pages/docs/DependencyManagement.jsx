@@ -10,10 +10,16 @@ export default function DependencyManagement() {
 
       <h2>Install a single package</h2>
       <pre><code>{`pytron install [dependency-name]`}</code></pre>
-
       <p>
         Example: <code>pytron install numpy</code> will create (or reuse) the Pytron-managed venv and install
         the requested package into it.
+      </p>
+
+      <h2>Uninstall a package</h2>
+      <pre><code>{`pytron uninstall [dependency-name]`}</code></pre>
+      <p>
+        Example: <code>pytron uninstall numpy</code> will remove the package from the venv and automatically
+        update your <code>requirements.json</code>.
       </p>
 
       <h2>requirements.json</h2>
