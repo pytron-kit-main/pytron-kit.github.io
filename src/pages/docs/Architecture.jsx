@@ -67,10 +67,33 @@ app.run()`}</code></pre>
         Pytron Kit implements a reactive system. When you update data in Python, it's automatically diffed and pushed across the native bridge to the Pytron Client, which triggers a re-render in your UI.
       </p>
 
-      <h2>UTF-8 & Deep OS Support</h2>
       <p>
         Through automatic application manifest management on Windows, Pytron ensures your application is "Unicoded-by-default," preventing the common encoding crashes associated with Python on Windows.
       </p>
+
+      <div className="foundation-box" style={{ marginTop: '3rem', borderTop: '1px solid #eee', paddingTop: '1.5rem' }}>
+        <h3>A Foundation of Giants</h3>
+        <p>
+          Pytron doesn't reinvent the wheel. We leverage enterprise-grade technologies used by billions of devices daily:
+        </p>
+        <ul>
+          <li>
+            <a href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/" target="_blank" rel="noopener noreferrer">
+              Microsoft WebView2
+            </a> - The same engine powering Microsoft Teams, Outlook, and Office.
+          </li>
+          <li>
+            <a href="https://developer.apple.com/documentation/webkit" target="_blank" rel="noopener noreferrer">
+              Apple WebKit
+            </a> - The high-performance engine behind Safari and all macOS/iOS apps.
+          </li>
+          <li>
+            <a href="https://pyo3.rs/" target="_blank" rel="noopener noreferrer">
+              PyO3 (Rust/Python)
+            </a> - The industry-leading bridge for high-performance Python extensions, used in the Pytron Secure Bootloader.
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

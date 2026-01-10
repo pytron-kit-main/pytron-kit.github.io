@@ -30,6 +30,7 @@ export default function Introduction() {
       <ul>
         <li><strong>No Local Server:</strong> No HTTP overhead or port conflicts. Direct bridge communication for maximum security and speed.</li>
         <li><strong>Native Packaging:</strong> One-command packaging into executables and professional installers (NSIS/DMG/Deb).</li>
+        <li><strong>Agentic Shield:</strong> Industrial-grade IP protection with AES-256-GCM encryption and Rust bootloader.</li>
         <li><strong>Modern CLI:</strong> A polished, color-coded CLI with built-in system diagnostics (<code>pytron doctor</code>).</li>
       </ul>
 

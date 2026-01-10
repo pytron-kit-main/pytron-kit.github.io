@@ -53,11 +53,11 @@ def cleanup():
 
       <h3>Power Tools</h3>
       <ul>
-        <li><strong>Deep Linking:</strong> <code>app.register_protocol()</code> and <code>app.state.launch_url</code> to handle custom URI schemes.</li>
-        <li><strong>Taskbar Progress:</strong> <code>window.set_taskbar_progress()</code> to show native progress in Windows Taskbar or macOS Dock.</li>
-        <li><strong>Binary Bridge:</strong> <code>window.serve_data()</code> for high-performance memory-to-webview binary streaming via <code>pytron://</code> protocol.</li>
-        <li><strong>Start on Boot:</strong> <code>app.set_start_on_boot(True)</code> for auto-launching on system startup.</li>
-        <li><strong>Daemon Mode:</strong> <code>app.hide()</code> and <code>app.show()</code> for running the app in the background.</li>
+        <li><strong>Agentic Shield:</strong> Rust-based bootloader that encrypts your source code with AES-256-GCM.</li>
+        <li><strong>Nuitka Support:</strong> Compile your Python code into actual machine code (C++) for maximum performance.</li>
+        <li><strong>VAP (Virtual Asset Provider):</strong> High-performance binary bridge for streaming data via <code>pytron://</code> protocol.</li>
+        <li><strong>Deep Linking:</strong> Handle custom URI schemes like <code>my-app://action</code>.</li>
+        <li><strong>Taskbar Progress:</strong> Native progress bars in Windows Taskbar or macOS Dock.</li>
       </ul>
 
 
@@ -111,27 +111,27 @@ function App() {
       </p>
       <pre><code>{`pytron doctor`}</code></pre>
 
-      <h2>Professional Rendering Engines</h2>
+      <h2>Native Desktop Performance</h2>
       <p>
-        Pytron focuses on two high-performance rendering paths. Use the <strong>Native System Webview</strong> for ultra-lightweight binaries, or <strong>PySide6 (Qt WebEngine)</strong> for advanced window management and commercial-grade stability.
+        Pytron uses the <strong>Native System Webview</strong> (WebView2 on Windows, WebKitGTK on Linux) to ensure ultra-lightweight binaries (~30MB) and very low memory consumption compared to Electron.
       </p>
 
       <h2>Professional Packaging</h2>
       <p>
         Package your app for Windows (NSIS), macOS (DMG), or Linux (Deb) with one command. Pytron handles the complexity of manifests, icons, and bundling.
       </p>
-      <pre><code>{`pytron package --installer`}</code></pre>
+      <pre><code>{`pytron package --secure --installer`}</code></pre>
 
       <h2>Built-in Auto Updater</h2>
       <p>
-        Pytron includes a robust <code>Updater</code> module out of the box. Simply host a JSON manifest file and your binary, and Pytron handles checking for updates, verifying versions, and installing the new release (detached process).
+        Pytron includes a robust <code>Updater</code> module out of the box. Simply host a JSON manifest file and your binary, and Pytron handles checking for updates, verifying versions, and installing the new release.
       </p>
-      <pre><code className="language-python">{`from pytron.updater import Updater
-updater = Updater()
+      <pre><code className="language-python">{`from pytron import App
+app = App()
 
 @app.expose
 def check_updates():
-    return updater.check("https://myapp.com/update.json")`}</code></pre>
+    return app.check_updates("https://myapp.com/update.json")`}</code></pre>
     </div>
   );
 }
