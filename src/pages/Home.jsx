@@ -32,7 +32,8 @@ export default function Home() {
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        position: 'relative'
+        position: 'relative',
+        overflow: 'hidden' // Force contain ambient glows
       }}>
         {/* Decorative ambient glue */}
         <div style={{
@@ -47,12 +48,12 @@ export default function Home() {
           filter: 'blur(60px)'
         }} />
 
-        <div className="container">
+        <div className="container" style={{ width: '100%', boxSizing: 'border-box' }}>
           <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}
           >
             <motion.div variants={itemVariants}>
               <span style={{
@@ -67,7 +68,7 @@ export default function Home() {
               </span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(3rem, 6vw, 5rem)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
+            <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(2.25rem, 8vw, 5rem)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
               Build <span style={{
                 background: 'linear-gradient(135deg, var(--primary-color), #fff)',
                 WebkitBackgroundClip: 'text',
@@ -80,20 +81,20 @@ export default function Home() {
               }}>Web Speed</span>
             </motion.h1>
 
-            <motion.p variants={itemVariants} style={{ fontSize: '1.25rem', maxWidth: '700px', margin: '0 auto 3rem', color: '#94a3b8' }}>
+            <motion.p variants={itemVariants} style={{ fontSize: '1.1rem', maxWidth: '700px', margin: '0 auto 3rem', color: '#94a3b8', padding: '0 1rem' }}>
               The lightweight framework that bridges Python logic with modern web UIs.
               Zero friction, native performance.
             </motion.p>
 
-            <motion.div variants={itemVariants} style={{ marginBottom: '3.5rem' }}>
+            <motion.div variants={itemVariants} style={{ marginBottom: '3.5rem', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 1rem', boxSizing: 'border-box' }}>
               <InstallSnippet />
             </motion.div>
 
-            <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link to="/docs" className="btn btn-primary" style={{ fontSize: '1.1rem', padding: '1rem 2.5rem' }}>
+            <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', padding: '0 1rem', width: '100%', boxSizing: 'border-box' }}>
+              <Link to="/docs" className="btn btn-primary" style={{ fontSize: '1rem', padding: '0.875rem 2rem', width: '100%', maxWidth: '300px' }}>
                 Start Building <ArrowRight size={20} />
               </Link>
-              <a href="https://pypi.org/project/pytron-kit/" target="_blank" className="btn btn-secondary" style={{ fontSize: '1.1rem', padding: '1rem 2.5rem' }}>
+              <a href="https://pypi.org/project/pytron-kit/" target="_blank" className="btn btn-secondary" style={{ fontSize: '1rem', padding: '0.875rem 2rem', width: '100%', maxWidth: '300px' }}>
                 View on PyPi
               </a>
             </motion.div>
@@ -102,16 +103,17 @@ export default function Home() {
       </section>
 
       {/* Features Grid */}
-      <section className="container" style={{ paddingBottom: '8rem' }}>
-        <div style={{ marginBottom: '4rem', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Why Pytron?</h2>
-          <p>Everything you need to ship professional desktop apps.</p>
+      <section className="container" style={{ paddingBottom: '8rem', overflowX: 'hidden' }}>
+        <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2.25rem', marginBottom: '1rem' }}>Why Pytron?</h2>
+          <p style={{ padding: '0 1rem' }}>Everything you need to ship professional desktop apps.</p>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '1.5rem',
+          width: '100%'
         }}>
           <FeatureCard
             icon={<Zap color="var(--secondary-color)" size={32} />}
@@ -162,16 +164,20 @@ function InstallSnippet() {
   return (
     <div style={{
       background: 'rgba(10, 10, 10, 0.8)',
-      padding: '0.75rem 0.75rem 0.75rem 1.5rem',
+      padding: '0.75rem 1rem',
       borderRadius: '1rem',
       border: '1px solid rgba(255, 255, 255, 0.1)',
-      display: 'inline-flex',
+      display: 'flex',
       alignItems: 'center',
-      gap: '2rem',
+      justifyContent: 'space-between',
+      gap: '1rem',
       boxShadow: '0 10px 40px -10px rgba(0,0,0,0.5)',
       backdropFilter: 'blur(10px)',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      width: '100%',
+      maxWidth: '400px',
+      boxSizing: 'border-box'
     }}>
       {/* Top glow line */}
       <div style={{
@@ -184,11 +190,13 @@ function InstallSnippet() {
 
       <code style={{
         fontFamily: "'Fira Code', monospace",
-        fontSize: '1.2rem',
+        fontSize: 'clamp(0.85rem, 4vw, 1.1rem)',
         color: '#e2e8f0',
         display: 'flex',
         alignItems: 'center',
-        gap: '0.5rem'
+        gap: '0.5rem',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden'
       }}>
         <span style={{ color: 'var(--secondary-color)' }}>$</span>
         {code}
@@ -206,7 +214,8 @@ function InstallSnippet() {
           transition: 'all 0.2s',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          flexShrink: 0
         }}
         title="Copy to clipboard"
       >

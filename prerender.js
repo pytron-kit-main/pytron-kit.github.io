@@ -12,9 +12,14 @@ const __dirname = path.dirname(__filename);
 const routes = [
     '/',
     '/docs',
+    '/docs/architecture',
+    '/docs/features',
+    '/docs/security',
+    '/docs/vap',
+    '/docs/cli',
     '/examples',
-    '/bite'
-    // Add more specific doc routes here as needed
+    '/bite',
+    '/requests-studio'
 ];
 
 const PORT = 4173;

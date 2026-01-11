@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { X } from 'lucide-react';
 
 const links = [
   { title: 'Introduction', path: '/docs' },
@@ -14,15 +15,31 @@ const links = [
   { title: 'Comparison', path: '/docs/comparison' },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }) {
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-        <h3 style={{ fontSize: '0.9rem', textTransform: 'uppercase', color: 'var(--text-secondary)', marginBottom: '1rem' }}>Documentation</h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+          <h3 style={{ fontSize: '0.9rem', textTransform: 'uppercase', color: 'var(--text-secondary)', margin: 0 }}>Documentation</h3>
+          <button
+            className="mobile-close-btn"
+            onClick={onClose}
+            style={{
+              display: 'none', // Shown on mobile via CSS
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-secondary)',
+              cursor: 'pointer'
+            }}
+          >
+            <X size={20} />
+          </button>
+        </div>
         {links.map(link => (
           <NavLink
             key={link.path}
             to={link.path}
+            onClick={onClose}
             end={link.path === '/docs'}
             style={({ isActive }) => ({
               padding: '0.5rem 1rem',
@@ -40,3 +57,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+

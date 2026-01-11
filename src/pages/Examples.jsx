@@ -62,11 +62,17 @@ export default function Examples() {
         />
 
         <ExampleCard
-          title="Pytron Task Manager"
-          description="A full-featured Todo application with categories, persistence, and native window controls. Showcases CRUD operations and state management."
-          tags={['React', 'SQLite', 'CRUD']}
-          repoUrl="https://github.com/Ghua8088/pytron-task-manager"
-          fallbackIcon={<CheckSquare size={40} color="var(--primary-color)" />}
+          title="Requests Studio"
+          description="A professional API client for testing and interaction. Desktop alternative built on Pytron with a Python backend and React frontend."
+          tags={['React', 'API Client', 'Python Requests']}
+          repoUrl={`${import.meta.env.BASE_URL}requests-studio`}
+          icon={`${import.meta.env.BASE_URL}examples/RequestsStudio/logo.ico`}
+          image={`${import.meta.env.BASE_URL}examples/RequestsStudio/screenshot.png`}
+          featured={true}
+          customAccent="#8b5cf6"
+          buttonText="View Details"
+          buttonIcon={<Layout size={18} />}
+          isInternal={true}
         />
       </div>
     </div>
@@ -75,7 +81,9 @@ export default function Examples() {
 
 import { Link } from 'react-router-dom';
 
-function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, image, featured, buttonText = "View Source", buttonIcon = <Github size={18} />, isInternal = false }) {
+function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, image, featured, buttonText = "View Source", buttonIcon = <Github size={18} />, isInternal = false, customAccent = null }) {
+  const accentColor = customAccent || (featured ? 'var(--primary-color)' : 'var(--border-color)');
+
   const ButtonContent = () => (
     <>
       {buttonIcon} {buttonText}
@@ -84,15 +92,16 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
 
   return (
     <motion.div
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -5, boxShadow: customAccent ? `0 10px 40px ${customAccent}20` : 'none' }}
       style={{
         background: 'var(--surface-color)',
         borderRadius: '1rem',
-        border: featured ? '1px solid var(--primary-color)' : '1px solid var(--border-color)',
+        border: `1px solid ${accentColor}`,
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        position: 'relative'
+        position: 'relative',
+        transition: 'all 0.3s ease'
       }}
     >
       {featured && (
@@ -100,13 +109,14 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
           position: 'absolute',
           top: '1rem',
           right: '1rem',
-          background: 'var(--primary-color)',
-          color: 'white',
+          background: accentColor,
+          color: customAccent ? 'white' : 'white',
           padding: '0.25rem 0.75rem',
           borderRadius: '1rem',
           fontSize: '0.8rem',
           fontWeight: 'bold',
-          zIndex: 10
+          zIndex: 10,
+          boxShadow: customAccent ? `0 0 20px ${customAccent}40` : 'none'
         }}>
           Featured
         </div>
@@ -133,11 +143,12 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
         <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
           {tags.map(tag => (
             <span key={tag} style={{
-              background: 'rgba(255,255,255,0.05)',
+              background: customAccent ? `${customAccent}15` : 'rgba(255,255,255,0.05)',
               padding: '0.25rem 0.75rem',
               borderRadius: '1rem',
               fontSize: '0.85rem',
-              color: 'var(--text-secondary)'
+              color: customAccent ? customAccent : 'var(--text-secondary)',
+              border: customAccent ? `1px solid ${customAccent}30` : 'none'
             }}>
               {tag}
             </span>
@@ -146,9 +157,15 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
 
         {isInternal ? (
           <Link
-            to={repoUrl.replace(import.meta.env.BASE_URL, '/')} // Remove base for internal routing to avoid double prefix if used
+            to={repoUrl.replace(import.meta.env.BASE_URL, '/')}
             className="btn btn-secondary"
-            style={{ width: '100%', justifyContent: 'center' }}
+            style={{
+              width: '100%',
+              justifyContent: 'center',
+              background: customAccent ? `${customAccent}10` : '',
+              borderColor: customAccent ? `${customAccent}40` : '',
+              color: customAccent ? customAccent : ''
+            }}
           >
             <ButtonContent />
           </Link>

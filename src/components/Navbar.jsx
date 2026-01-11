@@ -12,7 +12,7 @@ export default function Navbar() {
       background: 'rgba(5, 5, 5, 0.8)',
       backdropFilter: 'blur(10px)',
       borderBottom: '1px solid var(--border-color)',
-      zIndex: 100,
+      zIndex: 1000,
       display: 'flex',
       alignItems: 'center',
       padding: '0 2rem'
@@ -21,8 +21,9 @@ export default function Navbar() {
         <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 'bold', fontSize: '1.2rem' }}>
           <img src={`${import.meta.env.BASE_URL}pytron-banner.png`} alt="Pytron" style={{ height: '60px' }} />
         </Link>
-        
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+
+        {/* Desktop Links (Hidden on Mobile via CSS) */}
+        <div className="nav-links">
           <Link to="/docs" style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>Documentation</Link>
           <Link to="/examples" style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>Examples</Link>
           <a href="https://github.com/Ghua8088/pytron" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
