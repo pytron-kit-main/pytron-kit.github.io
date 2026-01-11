@@ -1,18 +1,20 @@
 :root {
-  --bg-color: #050505;
-  --surface-color: #121212;
-  --surface-hover: #1e1e1e;
-  --border-color: #2a2a2a;
-  
-  --primary-color: #06b6d4; /* Cyan */
-  --primary-glow: rgba(6, 182, 212, 0.3);
-  
-  --secondary-color: #f97316; /* Orange */
-  --secondary-glow: rgba(249, 115, 22, 0.3);
-  
+  --bg-color: #030303;
+  --surface-color: rgba(18, 18, 18, 0.6);
+  --surface-hover: rgba(30, 30, 30, 0.6);
+  --border-color: rgba(255, 255, 255, 0.1);
+
+  --primary-color: #06b6d4;
+  /* Cyan */
+  --primary-glow: #06b6d4;
+
+  --secondary-color: #f97316;
+  /* Orange */
+  --secondary-glow: #f97316;
+
   --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  
+  --text-secondary: #94a3b8;
+
   --sidebar-width: 280px;
   --header-height: 70px;
 }
@@ -21,6 +23,14 @@ body {
   margin: 0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-color);
+  /* Flame + Cyber Grid Background */
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(249, 115, 22, 0.10), transparent 25%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100vw 100vh, 100vw 100vh, 40px 40px, 40px 40px;
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -30,13 +40,16 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--bg-color);
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
 }
@@ -48,7 +61,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0 0 1rem 0;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -57,6 +75,11 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3.5rem;
   line-height: 1.1;
+  background: linear-gradient(to right, #ffffff, #a5f3fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
 }
 
 h2 {
@@ -72,11 +95,12 @@ p {
 a {
   color: var(--primary-color);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: all 0.2s;
 }
 
 a:hover {
   color: var(--secondary-color);
+  text-shadow: 0 0 10px var(--secondary-glow);
 }
 
 /* Utilities */
@@ -90,44 +114,55 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid transparent;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-color), #0891b2);
-  color: white;
-  box-shadow: 0 0 20px var(--primary-glow);
+  background: rgba(6, 182, 212, 0.1);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
 }
 
 .btn-primary:hover {
+  background: var(--primary-color);
+  color: #000;
   transform: translateY(-2px);
-  box-shadow: 0 0 30px var(--primary-glow);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.6);
 }
 
 .btn-secondary {
-  background: var(--surface-color);
-  border-color: var(--border-color);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  border-color: var(--primary-color);
-  background: var(--surface-hover);
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  background: rgba(249, 115, 22, 0.1);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
 }
 
 /* Code Blocks */
 pre {
-  background: #0d0d0d;
+  background: rgba(10, 10, 10, 0.8);
   padding: 1.5rem;
   border-radius: 0.75rem;
   border: 1px solid var(--border-color);
   overflow-x: auto;
   margin: 1.5rem 0;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
 }
 
 code {
@@ -136,10 +171,22 @@ code {
   color: #e2e8f0;
 }
 
-.syntax-keyword { color: #c678dd; }
-.syntax-string { color: #98c379; }
-.syntax-function { color: #61afef; }
-.syntax-comment { color: #5c6370; font-style: italic; }
+.syntax-keyword {
+  color: #c678dd;
+}
+
+.syntax-string {
+  color: #98c379;
+}
+
+.syntax-function {
+  color: #61afef;
+}
+
+.syntax-comment {
+  color: #5c6370;
+  font-style: italic;
+}
 
 /* Layouts */
 .main-content {
@@ -176,12 +223,14 @@ code {
   .docs-layout {
     flex-direction: column;
   }
+
   .sidebar {
     position: static;
     width: auto;
     border-right: none;
     border-bottom: 1px solid var(--border-color);
   }
+
   .docs-content {
     margin-left: 0;
     padding: 2rem;
@@ -195,6 +244,7 @@ code {
   border-top: 1px solid var(--border-color);
   margin-top: 2.5rem;
 }
+
 .site-footer .footer-top {
   display: flex;
   gap: 2rem;
@@ -202,9 +252,11 @@ code {
   align-items: flex-start;
   padding: 3.5rem 2rem;
 }
+
 .site-footer .footer-left {
   max-width: 420px;
 }
+
 .footer-brand {
   font-size: 1.25rem;
   letter-spacing: 0.25em;
@@ -212,6 +264,7 @@ code {
   font-weight: 700;
   color: var(--text-primary);
 }
+
 .footer-nav {
   list-style: none;
   padding: 0;
@@ -220,21 +273,25 @@ code {
   flex-direction: column;
   gap: 0.75rem;
 }
+
 .footer-nav a {
   color: var(--text-secondary);
   text-decoration: none;
   opacity: 0.95;
 }
+
 .site-footer .footer-right h3 {
   margin: 0 0 1rem 0;
   font-size: 1rem;
   font-weight: 700;
 }
+
 .footer-signup {
   display: flex;
   gap: 1rem;
   align-items: center;
 }
+
 .footer-signup input[type="email"] {
   padding: 0.75rem 1rem;
   border-radius: 8px;
@@ -245,28 +302,33 @@ code {
   max-width: 50vw;
   font-size: 0.95rem;
 }
+
 .site-footer .btn.btn-primary {
   background: var(--primary-color);
   color: #ffffff;
   box-shadow: none;
   padding: 0.65rem 1rem;
 }
+
 .footer-middle {
   text-align: center;
   padding: 1.5rem 2rem;
   color: var(--text-secondary);
   border-top: 1px solid var(--border-color);
 }
+
 .footer-links-row {
   display: flex;
   gap: 1.25rem;
   justify-content: center;
   margin-top: 0.5rem;
 }
+
 .footer-links-row a {
   color: var(--primary-color);
   text-decoration: none;
 }
+
 .footer-bottom {
   text-align: center;
   padding: 1.25rem 2rem 3rem 2rem;
@@ -287,10 +349,12 @@ code {
     flex-direction: column-reverse;
     gap: 2rem;
   }
+
   .footer-signup input[type="email"] {
     width: 100%;
     max-width: none;
   }
+
   .footer-right {
     width: 100%;
   }
