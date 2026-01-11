@@ -62,7 +62,31 @@ export default function BitePage() {
                         v0.3.0 Now Available
                     </div>
 
-                    <img src="/examples/bite/bite-banner.png" alt="Bite Banner" style={{ width: '100%', maxWidth: '600px', height: 'auto', marginBottom: '2rem', borderRadius: '1rem', boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)' }} />
+                    <div style={{
+                        width: '100%',
+                        maxWidth: '600px',
+                        minHeight: '200px',
+                        background: 'rgba(255,255,255,0.02)',
+                        borderRadius: '1rem',
+                        marginBottom: '2rem',
+                        overflow: 'hidden'
+                    }}>
+                        <motion.img
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.8 }}
+                            src="/examples/bite/bite-banner.png"
+                            alt="Bite Banner"
+                            loading="eager"
+                            decoding="async"
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                display: 'block',
+                                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)'
+                            }}
+                        />
+                    </div>
 
                     <h1 style={{
                         fontSize: '5rem',

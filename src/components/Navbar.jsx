@@ -19,7 +19,13 @@ export default function Navbar() {
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
         <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 'bold', fontSize: '1.2rem' }}>
-          <img src={`${import.meta.env.BASE_URL}pytron-banner.png`} alt="Pytron" style={{ height: '60px' }} />
+          <img
+            src={`${import.meta.env.BASE_URL}pytron-banner.png`}
+            alt="Pytron"
+            style={{ height: '60px' }}
+            decoding="async"
+            loading="eager"
+          />
         </Link>
 
         {/* Desktop Links (Hidden on Mobile via CSS) */}

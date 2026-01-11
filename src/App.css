@@ -34,6 +34,14 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    /* Fixed background is a performance killer on mobile */
+  }
 }
 
 /* Scrollbar */

@@ -101,7 +101,8 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        transition: 'all 0.3s ease'
+        transition: 'all 0.3s ease',
+        willChange: 'transform'
       }}
     >
       {featured && (
@@ -123,15 +124,37 @@ function ExampleCard({ title, description, tags, repoUrl, icon, fallbackIcon, im
       )}
 
       {image && (
-        <div style={{ height: '200px', overflow: 'hidden', borderBottom: '1px solid var(--border-color)' }}>
-          <img src={image} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{
+          height: '200px',
+          overflow: 'hidden',
+          borderBottom: '1px solid var(--border-color)',
+          background: 'rgba(255,255,255,0.02)'
+        }}>
+          <motion.img
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            src={image}
+            alt={title}
+            loading="lazy"
+            decoding="async"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         </div>
       )}
 
       <div style={{ padding: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
           {icon ? (
-            <img src={icon} alt="" style={{ width: 40, height: 40, objectFit: 'contain' }} />
+            <motion.img
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              src={icon}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              style={{ width: 40, height: 40, objectFit: 'contain' }}
+            />
           ) : (
             fallbackIcon
           )}

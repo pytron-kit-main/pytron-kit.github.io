@@ -79,10 +79,23 @@ export default function RequestsStudioPage() {
                         transition={{ duration: 0.8 }}
                         style={{ width: '100%', maxWidth: '1100px' }}
                     >
-                        <div style={{ marginBottom: '1.5rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
-                            <img
+                        <div style={{
+                            marginBottom: '1.5rem',
+                            width: '100%',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            minHeight: '200px', // Placeholder height
+                            background: 'rgba(255,255,255,0.01)',
+                            borderRadius: '1rem'
+                        }}>
+                            <motion.img
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 1 }}
                                 src={`${import.meta.env.BASE_URL}examples/RequestsStudio/Requests-studio-banner.png`}
                                 alt="Requests Studio"
+                                loading="eager"
+                                decoding="async"
                                 style={{
                                     width: '100%',
                                     maxWidth: '1000px',
