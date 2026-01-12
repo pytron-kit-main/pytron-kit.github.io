@@ -1,9 +1,15 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, CheckSquare, MessageSquare, Layout, Code, Activity } from 'lucide-react';
 
+import SEO from '../components/SEO';
+
 export default function Examples() {
   return (
     <div className="main-content container" style={{ paddingBottom: '4rem' }}>
+      <SEO
+        title="Examples & Showcases"
+        description="Explore production-ready applications built with Pytron-Kit. From system utilities to AI assistants."
+      />
       <div style={{ textAlign: 'center', padding: '4rem 0' }}>
         <h1 style={{ fontSize: '3rem', marginBottom: '1rem' }}>Examples</h1>
         <p style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto' }}>

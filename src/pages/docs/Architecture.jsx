@@ -1,4 +1,5 @@
 import Mermaid from '../../components/Mermaid';
+import SEO from '../../components/SEO';
 
 export default function Architecture() {
   const diagram = `
@@ -34,6 +35,10 @@ graph TD
 
   return (
     <div className="prose">
+      <SEO
+        title="Architecture"
+        description="Deep dive into Pytron's modular architecture, native bridge, and state synchronization."
+      />
       <h1>Architecture</h1>
       <p>
         Pytron is built on a modular architecture designed for security, high-performance IPC, and developer simplicity.

@@ -16,6 +16,7 @@ import DependencyManagement from './docs/DependencyManagement';
 import Menus from './docs/Menus';
 import BinaryEvolution from './docs/BinaryEvolution';
 import DocNavigation from '../components/DocNavigation';
+import SEO from '../components/SEO';
 
 export default function Docs() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -24,6 +25,10 @@ export default function Docs() {
 
   return (
     <div className="docs-layout">
+      <SEO
+        title="Documentation"
+        description="Learn how to build desktop applications with Pytron. Comprehensive guides on architecture, features, and security."
+      />
       {/* Mobile Sidebar Toggle */}
       <button
         className="mobile-sidebar-toggle"

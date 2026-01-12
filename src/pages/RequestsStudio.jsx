@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Send, Database, Code, Terminal, Globe, Menu, Bell, Monitor, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 export default function RequestsStudioPage() {
     return (
@@ -11,6 +12,10 @@ export default function RequestsStudioPage() {
             overflowX: 'hidden',
             position: 'relative'
         }}>
+            <SEO
+                title="Requests Studio - API Client"
+                description="Requests Studio is a professional API client for testing and interaction, built with Pytron-kit using Python Requests and React."
+            />
             {/* Insane Background Gradient Layer */}
             <div style={{
                 position: 'fixed',

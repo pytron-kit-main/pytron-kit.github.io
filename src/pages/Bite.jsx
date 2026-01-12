@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Search, Command, Zap, ArrowRight, Download, Terminal, Layers, Star, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import SEO from '../components/SEO';
 
 export default function BitePage() {
     const [release, setRelease] = useState(null);
@@ -19,6 +20,10 @@ export default function BitePage() {
     }, []);
     return (
         <div style={{ background: '#050505', minHeight: '100vh', color: '#fff', overflowX: 'hidden' }}>
+            <SEO
+                title="Bite - The Intelligent Launcher"
+                description="Bite is an extensible launcher for developers built with Pytron-Kit. Search files, run scripts, and control your system from one bar."
+            />
 
             {/* Hero Section */}
             <section style={{

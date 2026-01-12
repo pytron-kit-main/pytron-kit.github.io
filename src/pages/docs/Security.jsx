@@ -1,6 +1,12 @@
+import SEO from '../../components/SEO';
+
 export default function Security() {
     return (
         <div className="prose">
+            <SEO
+                title="Security - Agentic Shield"
+                description="Protect your Python source code with Pytron's Agentic Shield: AES-256 encryption, Rust bootloader, and in-memory execution."
+            />
             <h1>Security: Agentic Shield(Alpha)</h1>
             <p>
                 Pytron takes Intellectual Property protection seriously. While Python is traditionally easy to decompile, Pytron's <strong>Agentic Shield</strong> provides a multi-layered security system to protect your source code.

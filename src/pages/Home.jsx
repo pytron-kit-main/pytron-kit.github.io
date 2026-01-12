@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Box, Layers, Terminal, Package, Copy, Check } from 'lucide-react';
 import { useState } from 'react';
+import SEO from '../components/SEO';
 
 export default function Home() {
   const containerVariants = {
@@ -25,6 +26,10 @@ export default function Home() {
 
   return (
     <div className="main-content">
+      <SEO
+        title="Pytron-kit : Modern Python Desktop Apps"
+        description="The lightweight framework that bridges Python logic with modern web UIs. Zero friction, native performance."
+      />
       {/* Hero Section */}
       <section style={{
         minHeight: '85vh',
