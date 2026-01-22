@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Box, Layers, Terminal, Package, Copy, Check } from 'lucide-react';
+import { ArrowRight, Zap, Box, Layers, Terminal, Package, Copy, Check, BarChart, Activity, Cpu, Plane, Globe } from 'lucide-react';
+
 import { useState } from 'react';
 import SEO from '../components/SEO';
 
@@ -104,6 +105,105 @@ export default function Home() {
               </a>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Ecosystem / Plugins Section - NEW SHOWCASE */}
+      <section className="container" style={{ padding: '6rem 0', position: 'relative' }}>
+        {/* Background Glow */}
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '80%',
+          height: '80%',
+          background: 'radial-gradient(ellipse at center, rgba(6, 182, 212, 0.05) 0%, transparent 70%)',
+          zIndex: -1,
+          filter: 'blur(80px)'
+        }} />
+
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
+              Limitless <span style={{ color: 'var(--primary-color)' }}>Ecosystem</span>
+            </h2>
+            <p style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>
+              Extend Pytron with industrial-grade plugins. Drop-in power for visualization, monitoring, and more.
+            </p>
+          </motion.div>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+          gap: '2rem',
+          width: '100%'
+        }}>
+          {/* NEXUS Card */}
+          <PluginCard
+            title="Nexus Engine"
+            version="v1.0"
+            icon={<BarChart size={32} color="#06b6d4" />}
+            description="The Ultimate High-Performance Visualization Engine. Render millions of data points with our smart diffing algorithm."
+            features={["Real-time Updates", "Zero Overhead Static Mode", "Chart.js Integration"]}
+            gradient="linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.02))"
+            glowColor="rgba(6, 182, 212, 0.4)"
+            delay={0.1}
+          >
+            <div style={{ marginTop: '1.5rem', height: '100px', display: 'flex', alignItems: 'flex-end', gap: '4px', opacity: 0.8 }}>
+              {[40, 65, 30, 80, 55, 90, 45, 70, 95, 60].map((h, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ height: '10%' }}
+                  animate={{ height: `${h}%` }}
+                  transition={{
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    duration: 1.5,
+                    delay: i * 0.1
+                  }}
+                  style={{
+                    flex: 1,
+                    background: 'linear-gradient(to top, var(--primary-color), transparent)',
+                    borderRadius: '2px'
+                  }}
+                />
+              ))}
+            </div>
+          </PluginCard>
+
+          {/* TELEMETRY Card */}
+          <PluginCard
+            title="Flight Recorder"
+            version="Telemetry"
+            icon={<Plane size={32} color="#f97316" />}
+            description="Automatic Black Box recording. Capture crashes, monitor heartbeats, and replay sessions securely."
+            features={["Crash Forensics", "5s Heartbeat", "Smart Sanitization"]}
+            gradient="linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.02))"
+            glowColor="rgba(249, 115, 22, 0.4)"
+            delay={0.2}
+          >
+            <div style={{ marginTop: '1.5rem', height: '100px', background: 'rgba(0,0,0,0.3)', borderRadius: '0.5rem', padding: '1rem', fontFamily: 'Fira Code', fontSize: '0.75rem', color: '#f97316', overflow: 'hidden', position: 'relative' }}>
+              <motion.div
+                animate={{ y: [0, -100] }}
+                transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
+              >
+                <div>[INFO] Flight Recorder Active</div>
+                <div>[HEARTBEAT] Session: 8f3a...</div>
+                <div>[METRIC] RAM: 45MB | CPU: 2%</div>
+                <div>[WARN] Network latency spike</div>
+                <div>[SUCCESS] Snapshot uploaded</div>
+                <div>[INFO] Monitoring...</div>
+                <div>[HEARTBEAT] Session: 8f3a...</div>
+              </motion.div>
+              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px', background: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.3))' }} />
+            </div>
+          </PluginCard>
         </div>
       </section>
 
@@ -227,6 +327,70 @@ function InstallSnippet() {
         {copied ? <Check size={18} /> : <Copy size={18} />}
       </button>
     </div>
+  );
+}
+
+
+function PluginCard({ title, version, icon, description, features, gradient, glowColor, children, delay }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.6 }}
+      whileHover={{ y: -5, boxShadow: `0 20px 40px -10px ${glowColor}` }}
+      style={{
+        background: gradient,
+        borderRadius: '1.5rem',
+        padding: '2rem',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        position: 'relative',
+        overflow: 'hidden',
+        backdropFilter: 'blur(20px)',
+      }}
+    >
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.75rem', borderRadius: '1rem' }}>
+          {icon}
+        </div>
+        <span style={{
+          background: 'rgba(255,255,255,0.1)',
+          padding: '0.25rem 0.75rem',
+          borderRadius: '2rem',
+          fontSize: '0.75rem',
+          fontWeight: 600,
+          letterSpacing: '0.05em'
+        }}>
+          {version}
+        </span>
+      </div>
+
+      <h3 style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>{title}</h3>
+      <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
+        {description}
+      </p>
+
+      {/* Visual Content (Animation) */}
+      <div style={{ marginBottom: '2rem' }}>
+        {children}
+      </div>
+
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+          {features.map((feat, i) => (
+            <span key={i} style={{
+              fontSize: '0.85rem',
+              color: '#e2e8f0',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem'
+            }}>
+              <Check size={14} color="var(--primary-color)" /> {feat}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 }
 

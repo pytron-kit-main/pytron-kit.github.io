@@ -103,6 +103,26 @@ async function waitForServer(url) {
             console.log(`   └── Saved to ${outputPath}`);
         }
 
+        // Generate Sitemap
+        console.log('  Generating Sitemap...');
+        const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${routes.map(route => {
+            const url = `https://pytron-kit.github.io${route === '/' ? '' : route + '/'}`; // Ensure trailing slash
+            const priority = route === '/' ? '1.0' : '0.8';
+            const lastmod = new Date().toISOString().split('T')[0];
+            return `  <url>
+    <loc>${url}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+        }).join('\n')}
+</urlset>`;
+
+        fs.writeFileSync(path.join(OUT_DIR, 'sitemap.xml'), sitemapContent);
+        console.log(`   └── Saved to ${path.join(OUT_DIR, 'sitemap.xml')}`);
+
         await browser.close();
         console.log('  Prerendering Complete!');
 
