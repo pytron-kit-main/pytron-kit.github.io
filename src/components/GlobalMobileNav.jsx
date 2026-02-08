@@ -16,14 +16,13 @@ export default function GlobalMobileNav() {
                 style={{
                     position: 'fixed',
                     bottom: '1.5rem',
-                    left: '1.5rem', // Opposite of the docs toggle if they coexist
+                    right: '1.5rem',
                     background: 'linear-gradient(135deg, var(--secondary-color), #ea580c)',
                     color: 'white',
                     border: 'none',
                     borderRadius: '50%',
                     width: '56px',
                     height: '56px',
-                    boxShadow: '0 0 20px rgba(249, 115, 22, 0.4)',
                     zIndex: 1002,
                     display: 'none', // Managed by CSS
                     alignItems: 'center',

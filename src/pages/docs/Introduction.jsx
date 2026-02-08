@@ -1,48 +1,82 @@
+import CodeBlock from '../../components/CodeBlock';
+import Callout from '../../components/Callout';
+
 export default function Introduction() {
+  const helloWorldPy = `from pytron import App
+
+app = App()
+
+@app.expose
+def greet(name: str):
+    return f"Hello, {name} from Python!"
+
+app.run()`;
+
+  const helloWorldJs = `import pytron from 'pytron-client';
+
+const msg = await pytron.greet("User");
+console.log(msg); // "Hello, User from Python!"`;
+
   return (
     <div className="prose">
-      <h1>Introduction to Pytron</h1>
+      <h1 id="introduction">Introduction</h1>
       <p>
-        Pytron-Kit is a state-of-the-art, high-performance framework for building cross platform applications using Python for the backend and modern web technologies (React, Vue, Svelte, etc.) for the frontend.
-        It provides a professional developer experience with a focus on speed, small distribution sizes, and cross-platform consistency.
+        <strong>Pytron-kit</strong> is a framework for developing desktop applications using <strong>Python</strong> for backend logic and <strong>Modern Web Technologies</strong> (React, Vue, Svelte, etc.) for the user interface.
       </p>
-      <h2>Quick Start</h2>
+      
       <p>
-        Install the Pytron CLI to start building:
+        By utilizing the operating system's native webview, Pytron-kit produces standalone binaries that use fewer resources than traditional browser-bundled frameworks.
       </p>
-      <div style={{ margin: '2rem 0' }}>
-        <code style={{
-          background: 'rgba(0,0,0,0.3)',
-          padding: '1rem 2rem',
-          borderRadius: '0.5rem',
-          fontSize: '1.1rem',
-          border: '1px solid var(--border-color)',
-          fontFamily: 'monospace',
-          color: 'var(--primary-color)',
-          display: 'block',
-          width: 'fit-content'
-        }}>
-          pip install pytron-kit
-        </code>
-      </div>
 
-      <h2>The Pytron Advantage</h2>
+      <h2 id="features">Core Features</h2>
       <ul>
-        <li><strong>No Local Server:</strong> No HTTP overhead or port conflicts. Direct bridge communication for maximum security and speed.</li>
-        <li><strong>Native Packaging:</strong> One-command packaging into executables and professional installers (NSIS/DMG/Deb).</li>
-        <li><strong>Agentic Shield:</strong> Industrial-grade IP protection with AES-256-GCM encryption and Rust bootloader.</li>
-        <li><strong>Modern CLI:</strong> A polished, color-coded CLI with built-in system diagnostics (<code>pytron doctor</code>).</li>
+        <li><strong>Python Backend:</strong> Full access to the Python ecosystem, including AI, ML, and data processing libraries.</li>
+        <li><strong>Web Frontend:</strong> Build interfaces using standard web tools like React, Vue, or Tailwind CSS.</li>
+        <li><strong>Native Bridge:</strong> Bidirectional, asynchronous communication between Python and JavaScript.</li>
+        <li><strong>Source Protection:</strong> Native compilation and encryption to protect application logic.</li>
+        <li><strong>Lightweight Binaries:</strong> Small distribution size by leveraging system-native components.</li>
       </ul>
 
-      <div style={{ background: 'rgba(6, 182, 212, 0.1)', padding: '1.5rem', borderRadius: '0.5rem', border: '1px solid var(--primary-color)', marginTop: '2rem' }}>
-        <h3 style={{ color: 'var(--primary-color)', marginTop: 0 }}>Built with Pytron</h3>
-        <p>
-          Experience the flagship: <strong>Agentic</strong>. The ultimate desktop AI assistant with 70+ tools and deep system integration, fully powered by the Pytron-Kit engine.
-        </p>
-        <a href="https://ghua8088.github.io/Agentic/" target="_blank" className="btn btn-primary">
-          Check out Agentic
-        </a>
+      <h2 id="linux-requirements">System Requirements (Linux)</h2>
+      <p>
+        On Linux distributions such as <strong>Ubuntu or Debian</strong>, the following development libraries are required:
+      </p>
+      <CodeBlock language="bash" code="sudo apt-get install -y libcairo2-dev libgirepository-2.0-dev libglib2.0-dev pkg-config python3-dev libwebkit2gtk-4.1-dev gir1.2-gtk-4.0" />
+
+      <h2 id="quick-start">Installation and Setup</h2>
+      <p>The Pytron CLI handles project initialization and development workflows.</p>
+      <CodeBlock language="bash" code={`# 1. Install the toolkit
+pip install pytron-kit
+
+# 2. Create a new project
+pytron init my_app
+
+# 3. Start the development server
+pytron run --dev`} />
+
+      <h2 id="hello-world">Example</h2>
+      <p>Basic implementation of a bridge function between Python and JavaScript.</p>
+      
+      <div style={{ marginTop: '2rem' }}>
+        <p><strong>Python Backend</strong> (<code>main.py</code>)</p>
+        <CodeBlock language="python" code={helloWorldPy} />
       </div>
+      
+      <div style={{ marginTop: '2rem' }}>
+        <p><strong>Frontend</strong> (<code>App.jsx</code>)</p>
+        <CodeBlock language="javascript" code={helloWorldJs} />
+      </div>
+
+      <Callout title="Example Project: Agentic" type="success">
+        <p style={{ margin: 0 }}>
+          <strong>Agentic</strong> is a desktop AI assistant built using the Pytron-kit engine. It serves as a reference for implementing system-level integrations and complex UI-backend interactions.
+        </p>
+        <div style={{ marginTop: '1rem' }}>
+          <a href="https://ghua8088.github.io/Agentic/" target="_blank" className="btn btn-primary" style={{ textTransform: 'none', padding: '0.5rem 1rem' }}>
+            View Agentic
+          </a>
+        </div>
+      </Callout>
     </div>
   );
 }

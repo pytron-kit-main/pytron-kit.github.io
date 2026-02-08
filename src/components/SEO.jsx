@@ -9,14 +9,14 @@ const SEO = ({ title, description, keywords, image }) => {
     const cleanPath = pathname === '/' ? '' : pathname.endsWith('/') ? pathname : `${pathname}/`;
     const canonical = `${domain}${cleanPath}`;
     const defaultTitle = 'Pytron-kit : Modern Python Desktop Apps';
-    const defaultDescription = 'Build cross-platform desktop applications with Python and web technologies. Pytron is lightweight, fast, and frontend framework agnostic.';
-    const defaultKeywords = 'python, desktop app, electron alternative, gui, webview, react, vue, pytron';
+    const defaultDescription = 'Build cross-platform desktop applications with Python and web technologies. Pytron-kit is lightweight, fast, and frontend framework agnostic.';
+    const defaultKeywords = 'python, desktop app, electron alternative, gui, webview, react, vue, pytron-kit';
     const defaultImage = `${domain}/pytron-banner.png`;
 
     return (
         <Helmet>
             {/* Basic Meta Tags */}
-            <title>{title ? `${title} | Pytron` : defaultTitle}</title>
+            <title>{title ? `${title} | Pytron-kit` : defaultTitle}</title>
             <meta name="description" content={description || defaultDescription} />
             <meta name="keywords" content={keywords || defaultKeywords} />
             <link rel="canonical" href={canonical} />

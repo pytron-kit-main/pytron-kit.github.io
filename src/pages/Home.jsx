@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Box, Layers, Terminal, Package, Copy, Check, BarChart, Activity, Cpu, Plane, Globe } from 'lucide-react';
+import { ArrowRight, Zap, Box, Layers, Terminal, Package, Copy, Check, BarChart, Activity, Cpu, Plane, Globe, Shield } from 'lucide-react';
 
 import { useState } from 'react';
 import SEO from '../components/SEO';
@@ -32,29 +32,10 @@ export default function Home() {
         description="The lightweight framework that bridges Python logic with modern web UIs. Zero friction, native performance."
       />
       {/* Hero Section */}
-      <section style={{
-        minHeight: '85vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        position: 'relative',
-        overflow: 'hidden' // Force contain ambient glows
-      }}>
-        {/* Decorative ambient glue */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '600px',
-          height: '600px',
-          background: 'radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%)',
-          zIndex: -1,
-          filter: 'blur(60px)'
-        }} />
-
-        <div className="container" style={{ width: '100%', boxSizing: 'border-box' }}>
+      <section className="hero-section" style={{ textAlign: 'center' }}>
+        <div className="hero-ambient-glow" />
+        
+        <div className="container">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -63,99 +44,147 @@ export default function Home() {
           >
             <motion.div variants={itemVariants}>
               <span style={{
-                color: 'var(--secondary-color)',
+                color: 'var(--primary-color)',
                 textTransform: 'uppercase',
-                letterSpacing: '0.2rem',
-                fontSize: '0.875rem',
-                fontWeight: 'bold',
+                letterSpacing: '0.1rem',
+                fontSize: '0.75rem',
+                fontWeight: 800,
                 marginBottom: '1rem',
-                display: 'block'
+                display: 'block',
+                background: 'rgba(6, 182, 212, 0.1)',
+                padding: '0.4rem 1rem',
+                borderRadius: '2rem',
+                border: '1px solid rgba(6, 182, 212, 0.2)'
               }}>
+                Desktop Application Framework for Python
               </span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(2.25rem, 8vw, 5rem)', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-              Build <span style={{
-                background: 'linear-gradient(135deg, var(--primary-color), #fff)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                textShadow: '0 0 40px rgba(6, 182, 212, 0.4)'
-              }}>Desktop Apps</span><br />
-              with <span style={{
-                color: 'var(--secondary-color)',
-                textShadow: '0 0 40px rgba(249, 115, 22, 0.4)'
-              }}>Web Speed</span>
+            <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)', marginBottom: '1.5rem', lineHeight: 1.05, fontWeight: 900 }}>
+              Build <span className="font-lobster" style={{ color: 'var(--primary-color)', WebkitTextFillColor: 'initial', background: 'none' }}>Native Apps</span><br />
+              with <span className="font-lobster" style={{ color: 'var(--secondary-color)', WebkitTextFillColor: 'initial', background: 'none' }}>Python & Web Tech</span>
             </motion.h1>
 
-            <motion.p variants={itemVariants} style={{ fontSize: '1.1rem', maxWidth: '700px', margin: '0 auto 3rem', color: '#94a3b8', padding: '0 1rem' }}>
-              The lightweight framework that bridges Python logic with modern web UIs.
-              Zero friction, native performance.
+            <motion.p variants={itemVariants} style={{ fontSize: '1.1rem', maxWidth: '650px', margin: '0 auto 3rem', color: '#94a3b8', lineHeight: 1.6 }}>
+              A toolkit for building desktop applications using Python logic and modern web interfaces. 
+              Produces small, standalone binaries using system-native webviews.
             </motion.p>
 
-            <motion.div variants={itemVariants} style={{ marginBottom: '3.5rem', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 1rem', boxSizing: 'border-box' }}>
+            <motion.div variants={itemVariants} style={{ marginBottom: '3.5rem', width: '100%', display: 'flex', justifyContent: 'center' }}>
               <InstallSnippet />
             </motion.div>
 
-            <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', padding: '0 1rem', width: '100%', boxSizing: 'border-box' }}>
-              <Link to="/docs" className="btn btn-primary" style={{ fontSize: '1rem', padding: '0.875rem 2rem', width: '100%', maxWidth: '300px' }}>
-                Start Building <ArrowRight size={20} />
+            <motion.div variants={itemVariants} style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap', width: '100%' }}>
+              <Link to="/docs" className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '0.8rem 2.5rem', minWidth: '200px', borderRadius: '8px', textTransform: 'none' }}>
+                Documentation
               </Link>
-              <a href="https://pypi.org/project/pytron-kit/" target="_blank" className="btn btn-secondary" style={{ fontSize: '1rem', padding: '0.875rem 2rem', width: '100%', maxWidth: '300px' }}>
-                View on PyPi
+              <a href="https://github.com/Ghua8088/pytron" target="_blank" className="btn btn-secondary" style={{ fontSize: '0.95rem', padding: '0.8rem 2.5rem', minWidth: '200px', borderRadius: '8px', textTransform: 'none' }}>
+                GitHub Repository
               </a>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Ecosystem / Plugins Section - NEW SHOWCASE */}
+      {/* Security Section */}
       <section className="container" style={{ padding: '6rem 0', position: 'relative' }}>
-        {/* Background Glow */}
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '80%',
-          height: '80%',
-          background: 'radial-gradient(ellipse at center, rgba(6, 182, 212, 0.05) 0%, transparent 70%)',
-          zIndex: -1,
-          filter: 'blur(80px)'
-        }} />
-
-        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
-              Limitless <span style={{ color: 'var(--primary-color)' }}>Ecosystem</span>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 800 }}>
+              Security & <span style={{ color: 'var(--secondary-color)' }}>Source Protection</span>
             </h2>
-            <p style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem' }}>
-              Extend Pytron with industrial-grade plugins. Drop-in power for visualization, monitoring, and more.
+            <p style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', color: 'var(--text-secondary)' }}>
+              Built-in features to protect source code and ensure application integrity.
             </p>
           </motion.div>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-          gap: '2rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
+          gap: '2.5rem',
           width: '100%'
         }}>
-          {/* NEXUS Card */}
           <PluginCard
-            title="Nexus Engine"
-            version="v1.0"
-            icon={<BarChart size={32} color="#06b6d4" />}
-            description="The Ultimate High-Performance Visualization Engine. Render millions of data points with our smart diffing algorithm."
-            features={["Real-time Updates", "Zero Overhead Static Mode", "Chart.js Integration"]}
-            gradient="linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.02))"
-            glowColor="rgba(6, 182, 212, 0.4)"
+            title="Native Compilation"
+            version="Core"
+            icon={<Shield size={32} color="var(--primary-color)" />}
+            description="Compiles Python code into native modules to prevent direct access to source files."
+            features={["Source Encryption", "Native Loader", "Integrity Checks"]}
+            gradient="linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(6, 182, 212, 0.01))"
+            glowColor="rgba(6, 182, 212, 0.1)"
             delay={0.1}
           >
-            <div style={{ marginTop: '1.5rem', height: '100px', display: 'flex', alignItems: 'flex-end', gap: '4px', opacity: 0.8 }}>
+            <div style={{ height: '140px', background: 'rgba(0,0,0,0.4)', borderRadius: '1rem', padding: '1.25rem', fontFamily: 'monospace', fontSize: '13px', color: 'var(--text-secondary)', border: '1px solid var(--border-color)', overflow: 'hidden' }}>
+              <div style={{ opacity: 0.7 }}>$ pytron build</div>
+              <div style={{ color: 'var(--primary-color)', marginTop: '0.5rem' }}>[1/2] Compiling Python modules...</div>
+              <div style={{ color: 'var(--primary-color)' }}>[2/2] Generating executable...</div>
+              <div style={{ color: '#22c55e', marginTop: '0.5rem' }}>✓ Build finished.</div>
+            </div>
+          </PluginCard>
+
+          <PluginCard
+            title="Communication Bridge"
+            version="Runtime"
+            icon={<Cpu size={32} color="var(--secondary-color)" />}
+            description="A low-latency bridge for data exchange between the Python backend and the web frontend."
+            features={["Asynchronous IPC", "Type Validation", "Binary Data Support"]}
+            gradient="linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(249, 115, 22, 0.01))"
+            glowColor="rgba(249, 115, 22, 0.1)"
+            delay={0.2}
+          >
+            <div style={{ height: '140px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '1.5rem', background: 'rgba(0,0,0,0.2)', borderRadius: '1rem', padding: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+                <div style={{ padding: '8px 16px', background: 'rgba(255,255,255,0.05)', borderRadius: '0.5rem', border: '1px solid var(--border-color)', fontSize: '0.8rem' }}>Python</div>
+                <div style={{ height: '1px', flex: 1, background: 'linear-gradient(90deg, var(--secondary-color), transparent)', position: 'relative' }}>
+                  <motion.div animate={{ left: ['0%', '100%'] }} transition={{ repeat: Infinity, duration: 2, ease: "linear" }} style={{ position: 'absolute', top: '-2px', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--secondary-color)' }} />
+                </div>
+                <div style={{ padding: '8px 16px', background: 'rgba(6, 182, 212, 0.1)', borderRadius: '0.5rem', border: '1px solid var(--primary-color)', fontSize: '0.8rem', color: 'var(--primary-color)' }}>React</div>
+              </div>
+              <div style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-muted)' }}>Custom Protocol: pytron://</div>
+            </div>
+          </PluginCard>
+        </div>
+      </section>
+
+      {/* Extensions Section */}
+      <section className="container" style={{ padding: '6rem 0', position: 'relative' }}>
+        <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', fontWeight: 800 }}>
+              Available <span style={{ color: 'var(--primary-color)' }}>Extensions</span>
+            </h2>
+            <p style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', color: 'var(--text-secondary)' }}>
+              Optional plugins for telemetry, data visualization, and advanced system integration.
+            </p>
+          </motion.div>
+        </div>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
+          gap: '2.5rem',
+          width: '100%'
+        }}>
+          <PluginCard
+            title="Nexus Engine"
+            version="Plugin"
+            icon={<BarChart size={32} color="var(--primary-color)" />}
+            description="A visualization engine designed for rendering large datasets with minimal UI overhead."
+            features={["Efficient Canvas Rendering", "Real-time Updates", "React Hooks"]}
+            gradient="linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(6, 182, 212, 0.01))"
+            glowColor="rgba(6, 182, 212, 0.1)"
+            delay={0.1}
+          >
+            <div style={{ marginTop: '1.5rem', height: '100px', display: 'flex', alignItems: 'flex-end', gap: '6px', opacity: 0.8, padding: '0 1rem' }}>
               {[40, 65, 30, 80, 55, 90, 45, 70, 95, 60].map((h, i) => (
                 <motion.div
                   key={i}
@@ -164,93 +193,120 @@ export default function Home() {
                   transition={{
                     repeat: Infinity,
                     repeatType: "reverse",
-                    duration: 1.5,
-                    delay: i * 0.1
+                    duration: 2,
+                    delay: i * 0.15
                   }}
                   style={{
                     flex: 1,
                     background: 'linear-gradient(to top, var(--primary-color), transparent)',
-                    borderRadius: '2px'
+                    borderRadius: '4px 4px 0 0'
                   }}
                 />
               ))}
             </div>
           </PluginCard>
 
-          {/* TELEMETRY Card */}
           <PluginCard
             title="Flight Recorder"
-            version="Telemetry"
-            icon={<Plane size={32} color="#f97316" />}
-            description="Automatic Black Box recording. Capture crashes, monitor heartbeats, and replay sessions securely."
-            features={["Crash Forensics", "5s Heartbeat", "Smart Sanitization"]}
-            gradient="linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(249, 115, 22, 0.02))"
-            glowColor="rgba(249, 115, 22, 0.4)"
+            version="Plugin"
+            icon={<Activity size={32} color="var(--secondary-color)" />}
+            description="Automatic logging and diagnostic collection for debugging production applications."
+            features={["Crash Reports", "State Snapshots", "Performance Metrics"]}
+            gradient="linear-gradient(135deg, rgba(249, 115, 22, 0.05), rgba(249, 115, 22, 0.01))"
+            glowColor="rgba(249, 115, 22, 0.1)"
             delay={0.2}
           >
-            <div style={{ marginTop: '1.5rem', height: '100px', background: 'rgba(0,0,0,0.3)', borderRadius: '0.5rem', padding: '1rem', fontFamily: 'Fira Code', fontSize: '0.75rem', color: '#f97316', overflow: 'hidden', position: 'relative' }}>
+            <div style={{ marginTop: '1.5rem', height: '100px', background: 'rgba(0,0,0,0.3)', borderRadius: '1rem', padding: '1.25rem', fontFamily: 'monospace', fontSize: '13px', color: 'var(--secondary-color)', overflow: 'hidden', position: 'relative', border: '1px solid var(--border-color)' }}>
               <motion.div
-                animate={{ y: [0, -100] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "linear" }}
+                animate={{ y: [0, -120] }}
+                transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
               >
-                <div>[INFO] Flight Recorder Active</div>
-                <div>[HEARTBEAT] Session: 8f3a...</div>
-                <div>[METRIC] RAM: 45MB | CPU: 2%</div>
-                <div>[WARN] Network latency spike</div>
-                <div>[SUCCESS] Snapshot uploaded</div>
-                <div>[INFO] Monitoring...</div>
-                <div>[HEARTBEAT] Session: 8f3a...</div>
+                <div style={{ opacity: 0.8 }}>[SYS] Heartbeat...</div>
+                <div style={{ color: '#fff' }}>[LOG] Memory: 42MB | CPU: 1%</div>
+                <div style={{ opacity: 0.8 }}>[IO] File system ready</div>
+                <div style={{ color: '#fff' }}>[NET] Bridge connected</div>
+                <div style={{ opacity: 0.8 }}>[SYS] Snapshot saved</div>
               </motion.div>
-              <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40px', background: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.3))' }} />
             </div>
           </PluginCard>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="container" style={{ paddingBottom: '8rem', overflowX: 'hidden' }}>
-        <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.25rem', marginBottom: '1rem' }}>Why Pytron?</h2>
-          <p style={{ padding: '0 1rem' }}>Everything you need to ship professional desktop apps.</p>
+      {/* Feature Grid */}
+      <section className="container" style={{ paddingBottom: '6rem' }}>
+        <div style={{ marginBottom: '4rem', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '2.25rem', marginBottom: '1rem', fontWeight: 800 }}>Feature Overview</h2>
+          <p style={{ color: 'var(--text-secondary)' }}>Core capabilities included in the toolkit.</p>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '1.5rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '2rem',
           width: '100%'
         }}>
           <FeatureCard
-            icon={<Zap color="var(--secondary-color)" size={32} />}
-            title="Blazing Fast"
-            desc="Direct bridge communication. Switch between WebView2, CEF, or PySide6 engines instantly."
+            icon={<Zap color="var(--primary-color)" size={28} />}
+            title="Performance Architecture"
+            desc="Optimized communication between backend logic and UI layer."
             delay={0}
           />
           <FeatureCard
-            icon={<Box color="var(--primary-color)" size={32} />}
-            title="Native Packaging"
-            desc="Professional installers for Windows, macOS, and Linux with full UTF-8 support."
+            icon={<Box color="var(--primary-color)" size={28} />}
+            title="Standalone Packaging"
+            desc="Generate installers for Windows, macOS, and Linux."
             delay={0.1}
           />
           <FeatureCard
-            icon={<Package color="#06b6d4" size={32} />}
-            title="Dependency Manager"
-            desc="Automated virtualenv and requirements management via the CLI."
+            icon={<Package color="var(--primary-color)" size={28} />}
+            title="Dependency Management"
+            desc="Automated virtual environment and requirement handling."
             delay={0.2}
           />
           <FeatureCard
-            icon={<Layers color="#a855f7" size={32} />}
-            title="Frontend Agnostic"
-            desc="Works with React, Vue, Svelte, or Next.js. Scaffold any project with a single command."
+            icon={<Layers color="var(--primary-color)" size={28} />}
+            title="Frontend Options"
+            desc="Compatible with React, Vue, Svelte, or standard JavaScript."
             delay={0.3}
           />
           <FeatureCard
-            icon={<Terminal color="#22c55e" size={32} />}
-            title="Intelligent CLI"
-            desc="Built-in diagnostics with `pytron doctor` and an elegant Rich-powered interface."
+            icon={<Terminal color="var(--primary-color)" size={28} />}
+            title="CLI Tools"
+            desc="Command-line interface for scaffolding and project management."
             delay={0.4}
           />
         </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="container" style={{ paddingBottom: '8rem' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{
+            background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(5, 5, 5, 0.5))',
+            padding: '4rem 2rem',
+            borderRadius: '2rem',
+            border: '1px solid var(--border-color)',
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden'
+          }}
+        >
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', fontWeight: 800 }}>Get Started with Pytron-kit</h2>
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 2.5rem', fontSize: '1.1rem' }}>
+            Create lightweight and secure desktop applications with Python and React.
+          </p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link to="/docs" className="btn btn-primary" style={{ padding: '0.8rem 3rem', textTransform: 'none' }}>
+              Documentation
+            </Link>
+            <a href="https://github.com/Ghua8088/pytron" target="_blank" className="btn btn-secondary" style={{ padding: '0.8rem 3rem', textTransform: 'none' }}>
+              GitHub
+            </a>
+          </div>
+        </motion.div>
       </section>
     </div>
   );
@@ -334,58 +390,61 @@ function InstallSnippet() {
 function PluginCard({ title, version, icon, description, features, gradient, glowColor, children, delay }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay, duration: 0.6 }}
-      whileHover={{ y: -5, boxShadow: `0 20px 40px -10px ${glowColor}` }}
+      transition={{ delay, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
+      className="plugin-card"
       style={{
-        background: gradient,
-        borderRadius: '1.5rem',
-        padding: '2rem',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        position: 'relative',
-        overflow: 'hidden',
-        backdropFilter: 'blur(20px)',
+        display: 'flex',
+        flexDirection: 'column'
       }}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-        <div style={{ background: 'rgba(255,255,255,0.05)', padding: '0.75rem', borderRadius: '1rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <div style={{ 
+          background: 'rgba(255,255,255,0.03)', 
+          padding: '0.75rem', 
+          borderRadius: '12px',
+          border: '1px solid var(--border-color)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
           {icon}
         </div>
         <span style={{
-          background: 'rgba(255,255,255,0.1)',
+          background: 'rgba(255,255,255,0.05)',
           padding: '0.25rem 0.75rem',
           borderRadius: '2rem',
-          fontSize: '0.75rem',
+          fontSize: '0.7rem',
           fontWeight: 600,
-          letterSpacing: '0.05em'
+          color: 'var(--text-muted)',
+          border: '1px solid var(--border-color)'
         }}>
           {version}
         </span>
       </div>
 
-      <h3 style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>{title}</h3>
-      <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: 1.6 }}>
+      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.75rem', fontWeight: 700, letterSpacing: '-0.02em' }}>{title}</h3>
+      <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: 1.6, fontSize: '0.95rem' }}>
         {description}
       </p>
 
-      {/* Visual Content (Animation) */}
-      <div style={{ marginBottom: '2rem' }}>
+      <div style={{ flex: 1, marginBottom: '2.5rem' }}>
         {children}
       </div>
 
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+      <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem', marginTop: 'auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
           {features.map((feat, i) => (
             <span key={i} style={{
-              fontSize: '0.85rem',
-              color: '#e2e8f0',
+              fontSize: '0.8rem',
+              color: 'var(--text-secondary)',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.4rem'
+              gap: '0.5rem'
             }}>
-              <Check size={14} color="var(--primary-color)" /> {feat}
+              <Check size={14} color="var(--primary-color)" strokeWidth={3} /> {feat}
             </span>
           ))}
         </div>
@@ -397,39 +456,20 @@ function PluginCard({ title, version, icon, description, features, gradient, glo
 function FeatureCard({ icon, title, desc, delay }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
-      whileHover={{
-        y: -10,
-        backgroundColor: 'rgba(255, 255, 255, 0.03)',
-        borderColor: 'rgba(255, 255, 255, 0.2)',
-        boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)'
-      }}
-      style={{
-        background: 'rgba(255, 255, 255, 0.01)', // Very subtle glass
-        backdropFilter: 'blur(12px)',
-        padding: '2.5rem',
-        borderRadius: '1.5rem',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        transition: 'border-color 0.3s'
-      }}
+      transition={{ duration: 0.8, delay, ease: [0.23, 1, 0.32, 1] }}
+      className="feature-card"
     >
       <div style={{
         marginBottom: '1.5rem',
-        background: 'rgba(255,255,255,0.05)',
-        width: 'fit-content',
-        padding: '1rem',
-        borderRadius: '1rem',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+        color: 'var(--primary-color)'
       }}>
         {icon}
       </div>
-      <h3 style={{ fontSize: '1.35rem', marginBottom: '0.75rem', fontWeight: 600 }}>{title}</h3>
-      <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
+      <h3 style={{ fontSize: '1.2rem', marginBottom: '0.75rem', fontWeight: 600, letterSpacing: '-0.01em' }}>{title}</h3>
+      <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
         {desc}
       </p>
     </motion.div>

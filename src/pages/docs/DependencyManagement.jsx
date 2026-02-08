@@ -1,50 +1,71 @@
+import SEO from '../../components/SEO';
+import CodeBlock from '../../components/CodeBlock';
+
 export default function DependencyManagement() {
   return (
     <div className="prose">
+      <SEO 
+        title="Dependency Management" 
+        description="Learn how Pytron manages Python virtual environments and dependencies automatically." 
+      />
       <h1>Dependency Management</h1>
 
       <p>
-        Pytron provides a simple dependency management workflow. Use the <strong>pytron install</strong> command
-        to add packages into the environment that Pytron manages (a virtualenv created by Pytron).
+        Pytron provides a zero-config dependency management workflow. It automatically handles virtual environments so you don't have to worry about conflicting packages or system-wide installations.
       </p>
 
-      <h2>Install a single package</h2>
-      <pre><code>{`pytron install [dependency-name]`}</code></pre>
+      <h2>The Pytron Venv</h2>
       <p>
-        Example: <code>pytron install numpy</code> will create (or reuse) the Pytron-managed venv and install
-        the requested package into it.
+        When you initialize a project or run an install command, Pytron creates a specialized virtual environment (usually in a hidden <code>.pytron_env</code> or similar internal directory). This environment is used exclusively by your app during development and packaging.
       </p>
 
-      <h2>Uninstall a package</h2>
-      <pre><code>{`pytron uninstall [dependency-name]`}</code></pre>
+      <h2>Commands</h2>
+      
+      <h3>Installing Packages</h3>
       <p>
-        Example: <code>pytron uninstall numpy</code> will remove the package from the venv and automatically
-        update your <code>requirements.json</code>.
+        Use the <code>pytron install</code> command to add packages. This automatically detects your OS and installs the correct binaries.
       </p>
+      <CodeBlock language="bash" code={`# Install a single package
+pytron install numpy
 
-      <h2>requirements.json</h2>
+# Install multiple packages
+pytron install pandas requests toggl-python`} />
+
+      <h3>The requirements.json</h3>
       <p>
-        If you run <code>pytron install</code> with no package name, Pytron will look for a <code>requirements.json</code>
-        file in your project root and install all listed dependencies.
+        Instead of a standard <code>requirements.txt</code>, Pytron uses a modern <code>requirements.json</code> file to track dependencies. This allows for better metadata and platform-specific targeting in the future.
       </p>
 
-      <pre><code className="language-json">{`{
+      <CodeBlock language="json" code={`{
   "dependencies": [
     "pytron-kit",
-    "numpy"
+    "numpy",
+    "requests"
   ]
-}`}</code></pre>
+}`} />
 
       <p>
-        The file must be valid JSON and contain a top-level <code>dependencies</code> array of package names.
+        Running <code>pytron install</code> without any arguments will sync your virtual environment with the <code>requirements.json</code>.
       </p>
 
-      <h2>Behavior</h2>
-      <ul>
-        <li>Running <code>pytron install &lt;name&gt;</code> installs the named package into the Pytron venv.</li>
-        <li>Running <code>pytron install</code> with no arguments installs all packages from <code>requirements.json</code>.</li>
-        <li>Pytron creates the venv automatically if it does not exist.</li>
-      </ul>
+      <h2>Uninstalling</h2>
+      <CodeBlock language="bash" code="pytron uninstall numpy" />
+      <p>
+        This removes the package from the internal venv and updates the <code>requirements.json</code> manifest automatically.
+      </p>
+
+      <div className="callout">
+        <h3>Shared Runtimes</h3>
+        <p>
+          If you have multiple Pytron projects, they can share a global "base" environment to save disk space, while maintaining project-specific overlays for unique dependencies.
+        </p>
+      </div>
+
+      <h2>Complex Dependencies</h2>
+      <p>
+        For heavy libraries like <strong>PyTorch</strong>, <strong>TensorFlow</strong>, or <strong>llama-cpp-python</strong>, use the <code>force-package</code> flag in your <code>settings.json</code> to ensure the compiler (Nuitka or Shield) includes the necessary shared libraries (.dll/.so) in the final bundle.
+      </p>
     </div>
   );
 }
+

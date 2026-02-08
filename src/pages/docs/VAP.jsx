@@ -1,56 +1,53 @@
+import CodeBlock from '../../components/CodeBlock';
+
 export default function VAP() {
-    return (
-        <div className="prose">
-            <h1>Virtual Asset Provider (VAP)</h1>
-            <p>
-                The <strong>Virtual Asset Provider</strong> is Pytron's high-performance, zero-copy binary bridge. It allows you to stream massive datasets, video frames, and AI tensors between Python and JavaScript without the "Base64 Tax."
-            </p>
+  return (
+    <div className="prose">
+      <h1>Virtual IPC (VAP)</h1>
+      <p>
+        The <strong>Virtual Asset Provider (VAP)</strong> is Pytron-kit's high-performance, zero-copy binary bridge. It enables the streaming of large datasets, video frames, and AI tensors between Python and the user interface without the performance overhead of Base64 encoding.
+      </p>
 
-            <h2>The Problem: The Base64 Tax</h2>
-            <p>
-                In standard webview frameworks, sending an image looks like this:
-                <br />
-                <code>Python Bytes → Base64 String (+33% size) → IPC Message → JS String → Browser Decode → Bits</code>
-            </p>
-            <p>
-                This process is slow, wastes CPU, and causes UI stutters when dealing with high-frequency data (like 60FPS video).
-            </p>
+      <h2>Efficient Data Transfer</h2>
+      <p>
+        Standard webview communication typically requires converting binary data into strings, which increases data size by approximately 33% and consumes significant CPU resources during encoding and decoding.
+      </p>
+      
+      <p>
+        VAP bypasses this limitation by allowing the Python backend to serve raw data directly into a memory pool that the frontend can access using standard web protocols.
+      </p>
 
-            <h2>The Solution: <code>pytron://</code></h2>
-            <p>
-                VAP allows the Python backend to <strong>serve</strong> data into a memory pool that the frontend can <strong>pull</strong> from using standard web protocols.
-            </p>
+      <h2 id="protocol">The <code>pytron://</code> Protocol</h2>
+      <p>
+        Pytron-kit intercepts the custom <code>pytron://</code> protocol, allowing the user interface to request assets directly from the Python runtime.
+      </p>
 
-            <h3>Step 1: Serve from Python</h3>
-            <pre><code className="language-python">{`# Serve raw binary data
+      <h3>1. Register Data in Python</h3>
+      <CodeBlock language="python" code={`# Serve raw binary data directly
 image_bytes = model.generate_image()
-window.serve_data("my-image", image_bytes, "image/jpeg")`}</code></pre>
+window.serve_data("active-frame", image_bytes, "image/jpeg")`} />
 
-            <h3>Step 2: Consumption in JavaScript</h3>
-            <p>
-                Pytron automatically intercepts the <code>pytron://</code> protocol. You can use it in tags or fetch calls.
-            </p>
-            <pre><code className="language-jsx">{`// React/HTML tag (Auto-intercepted)
-<img src="pytron://my-image" />
+      <h3>2. Access from the Frontend</h3>
+      <p>
+        Once served, the data is accessible via a standard URL in your UI components or fetch calls.
+      </p>
+      <CodeBlock language="jsx" code={`// Standard HTML/UI tag
+<img src="pytron://active-frame" />
 
-// Raw fetch
-const res = await fetch('pytron://my-image');
-const blob = await res.blob();`}</code></pre>
+// Native fetch call
+const res = await fetch('pytron://active-frame');
+const data = await res.arrayBuffer();`} />
 
-            <h2>Technical Implementation: The Latin-1 Trick</h2>
-            <p>
-                Since IPC bridges are typically string-based, Pytron uses a specialized <strong>Latin-1 mapping</strong>. Every byte (0-255) is mapped to its exact Unicode equivalent, allowing raw bits to travel inside a string container without corruption. On the JS side, the interceptor re-assembles these into a <code>Uint8Array</code> and finally a <code>Blob</code>.
-            </p>
+      <h2>Technical Architecture</h2>
+      <p>
+        Since underlying IPC channels are often string-based, Pytron-kit utilizes a specialized mapping technique to transport raw bits inside string containers without corruption. The frontend interceptor then reconstructs these bits into typed arrays (e.g., <code>Uint8Array</code>) for use in the browser environment.
+      </p>
 
-            <h2>Virtual File Mapping</h2>
-            <p>
-                VAP isn't just for memory. It also creates a secure sandbox for your application files. Any file inside your project root is reachable via:
-            </p>
-            <pre><code>{`pytron://app/assets/logo.png`}</code></pre>
-            <p>
-                This is faster and more secure than using <code>file://</code> URLs, as it includes built-in path-traversal protection.
-            </p>
-
-        </div>
-    );
+      <h2>Virtual File System</h2>
+      <p>
+        VAP also provides a secure sandbox for application assets. Files within the project root can be accessed via the custom protocol, providing a more secure and efficient alternative to <code>file://</code> URLs with built-in path-traversal protection.
+      </p>
+      <CodeBlock language="bash" code="pytron://app/assets/branding/logo.png" />
+    </div>
+  );
 }

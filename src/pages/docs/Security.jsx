@@ -1,57 +1,59 @@
 import SEO from '../../components/SEO';
+import CodeBlock from '../../components/CodeBlock';
+import Callout from '../../components/Callout';
 
 export default function Security() {
     return (
         <div className="prose">
             <SEO
-                title="Security - Agentic Shield"
-                description="Protect your Python source code with Pytron's Agentic Shield: AES-256 encryption, Rust bootloader, and in-memory execution."
+                title="Security & Source Protection"
+                description="Learn about Pytron-kit's source protection features, native compilation, and security auditing."
             />
-            <h1>Security: Agentic Shield(Alpha)</h1>
+            <h1>Security & Source Protection</h1>
             <p>
-                Pytron takes Intellectual Property protection seriously. While Python is traditionally easy to decompile, Pytron's <strong>Agentic Shield</strong> provides a multi-layered security system to protect your source code.
+                Pytron-kit provides a multi-stage pipeline designed to protect application logic and ensure the integrity of your distributed binaries.
             </p>
 
-            <h2>How it Works</h2>
-            <p>
-                When you package your application using <code>pytron package --secure</code>, Pytron fundamentally changes the way your application boots and executes.
-            </p>
+            <h2>Source Protection Pipeline</h2>
 
             <ol>
                 <li>
-                    <strong>AES-256-GCM Encryption:</strong> Your Python source code is compressed and encrypted using industrial-grade AES-256-GCM.
+                    <strong>Crystal Audit (PEP 578):</strong> Traditional static analysis misses hidden imports. Pytron uses <strong>Crystal Audit</strong> to launch your app in a surveillance mode, hooking into the low-level import system (`sys.addaudithook`) to capture every specific module loaded during runtime.
                 </li>
                 <li>
-                    <strong>Rust Bootloader:</strong> A custom-built Rust binary is used as the application entry point. This binary contains the logic to decrypt your code in memory.
+                    <strong>Defanged Execution:</strong> During the audit, destructive operations (like `os.remove`) are aggressive mocked, allowing safe "dry run" analysis of production logic.
                 </li>
                 <li>
-                    <strong>Binary Sealing:</strong> The encryption key is unique to every build and is embedded into the executable's footer alongside a security magic signature (<code>PYTRON_K</code>).
-                </li>
-                <li>
-                    <strong>In-Memory Execution:</strong> Your code never touches the disk in a readable format. The Rust bootloader uses <code>PyO3</code> to feed the decrypted source directly into the Python interpreter's memory.
+                    <strong>Binary Compilation (Cython):</strong> Critical modules are compiled to native machine code (`.pyd`/`.so`), making them resistant to trivial decompilation tools like `uncompyle6`.
                 </li>
             </ol>
 
-            <h2>Anti-Debugging Features</h2>
+            <h2>Advanced Security Features</h2>
             <p>
-                The secure bootloader includes passive evolution and active protection against reverse engineering:
+                The <strong>Secure Pipeline</strong> (available via `--secure`) hardens your application against reverse engineering:
             </p>
             <ul>
-                <li><strong>IsDebuggerPresent:</strong> Detects if a debugger is attached and gracefully terminates the process.</li>
-                <li><strong>Timing Checks:</strong> Uses high-resolution timers to detect if the code execution is being manually stepped through or slowed down by an analysis tool.</li>
-                <li><strong>Environment Isolation:</strong> Forcefully clears toxic environment variables (<code>PYTHONPATH</code>, <code>PYTHONHOME</code>) to prevent dependency hijacking.</li>
+                <li><strong>Native Bootloader:</strong> A custom Rust-based loader ("Agentic Shield") initializes the environment and launches your compiled binary, providing a secure native entry point.</li>
+                <li><strong>Library Fusion:</strong> Distributed Python modules are bundled into a single `app.bundle` structure, obscuring the standard `_internal` directory layout and reducing file clutter.</li>
+                <li><strong>Integrity Checks:</strong> The pipeline ensures that compiled components are correctly linked and loaded, preventing basic tampering.</li>
             </ul>
 
-            <h2>Usage</h2>
+            <h2>Production Packaging</h2>
             <p>
-                Protecting your app is as simple as adding a flag to your packaging command:
+                Pytron-kit offers tiered packaging. <strong>Note:</strong> Standard PyInstaller packaging is easily fully decompiled. For production, always use Secure or Nuitka pipelines.
             </p>
-            <pre><code>{`pytron package --secure`}</code></pre>
+            <CodeBlock language="bash" code={`# Standard (Not Recommended for Commercial)
+pytron package
 
-            <div className="info-box" style={{ background: 'rgba(234, 179, 8, 0.1)', padding: '1rem', borderRadius: '0.5rem', marginTop: '2rem' }}>
-                <strong>Note on Antivirus:</strong> Because the Shield decrypts code in memory, some sensitive antivirus programs (like Windows Defender) may flag unsigned binaries as suspicious. It is highly recommended to <strong>digitally sign</strong> your executables for production distribution.
-            </div>
+# Secure Pipeline (Cython + Fusion)
+pytron package --secure
 
+# Native Compilation (Nuitka)
+pytron package --nuitka`} />
+
+            <Callout title="Code Signing" type="warning">
+                Because advanced protection uses custom bootloaders and in-memory execution, we recommend <strong>digitally signing</strong> your executables to ensure compatibility with operating system security policies.
+            </Callout>
         </div>
     );
 }

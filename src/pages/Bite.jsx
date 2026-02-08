@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import { Search, Command, Zap, ArrowRight, Download, Terminal, Layers, Star, Github } from 'lucide-react';
+import { Search, Command, Zap, Download, Terminal, Layers, Github, Cpu, Layout } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
+import Callout from '../components/Callout';
 
 export default function BitePage() {
     const [release, setRelease] = useState(null);
@@ -18,276 +19,145 @@ export default function BitePage() {
             })
             .catch(() => { });
     }, []);
+
     return (
-        <div style={{ background: '#050505', minHeight: '100vh', color: '#fff', overflowX: 'hidden' }}>
+        <div className="main-content">
             <SEO
-                title="Bite - The Intelligent Launcher"
-                description="Bite is an extensible launcher for developers built with Pytron-Kit. Search files, run scripts, and control your system from one bar."
+                title="Bite Showcase | Pytron-kit"
+                description="Bite is an extensible launcher for developers built with Pytron-kit. Search files, run scripts, and control your system."
             />
 
             {/* Hero Section */}
-            <section style={{
-                position: 'relative',
-                padding: '8rem 2rem 4rem',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-                overflow: 'hidden'
-            }}>
-                {/* Background Gradients */}
-                <div style={{
-                    position: 'absolute',
-                    top: '-20%',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: '800px',
-                    height: '800px',
-                    background: 'radial-gradient(circle, rgba(94, 92, 230, 0.15) 0%, rgba(94, 92, 230, 0) 70%)',
-                    zIndex: 0,
-                    pointerEvents: 'none'
-                }} />
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    style={{ zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-                >
-                    <div style={{
-                        background: 'rgba(94, 92, 230, 0.1)',
-                        border: '1px solid rgba(94, 92, 230, 0.3)',
-                        padding: '0.4rem 1rem',
-                        borderRadius: '2rem',
-                        fontSize: '0.9rem',
-                        color: '#818cf8',
-                        marginBottom: '1.5rem',
-                        fontWeight: 600
-                    }}>
-                        v0.3.0 Now Available
-                    </div>
-
-                    <div style={{
-                        width: '100%',
-                        maxWidth: '600px',
-                        minHeight: '200px',
-                        background: 'rgba(255,255,255,0.02)',
-                        borderRadius: '1rem',
-                        marginBottom: '2rem',
-                        overflow: 'hidden'
-                    }}>
-                        <motion.img
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.8 }}
-                            src="/examples/bite/bite-banner.png"
-                            alt="Bite Banner"
-                            loading="eager"
-                            decoding="async"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                                display: 'block',
-                                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.5)'
-                            }}
-                        />
-                    </div>
-
-                    <h1 style={{
-                        fontSize: '5rem',
-                        fontWeight: 800,
-                        lineHeight: 1,
-                        marginBottom: '1.5rem',
-                        background: 'linear-gradient(to bottom right, #fff, #a5b4fc)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent'
-                    }}>
-
-                    </h1>
-
-                    <p style={{
-                        fontSize: '1.25rem',
-                        maxWidth: '600px',
-                        color: '#a1a1aa',
-                        marginBottom: '2.5rem',
-                        lineHeight: 1.6
-                    }}>
-                        The intelligent, extensible launcher for developers. <br />
-                        Search files, run scripts, and control your system—all from one bar.
-                    </p>
-
-                    <div style={{ display: 'flex', gap: '1rem' }}>
-                        <a href="https://github.com/Ghua8088/py-cast" target="_blank" className="btn-primary" style={{
-                            padding: '0.8rem 2rem',
-                            borderRadius: '0.75rem',
-                            background: '#5e5ce6',
-                            color: 'white',
-                            textDecoration: 'none',
-                            fontWeight: 600,
-                            boxShadow: '0 0 30px rgba(94, 92, 230, 0.4)',
-                            display: 'flex', alignItems: 'center', gap: '0.5rem'
+            <section className="hero-section" style={{ minHeight: 'auto', padding: '6rem 2rem' }}>
+                <div className="container">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                    >
+                        <div style={{
+                            background: 'rgba(6, 182, 212, 0.1)',
+                            border: '1px solid rgba(6, 182, 212, 0.2)',
+                            padding: '0.4rem 1rem',
+                            borderRadius: '2rem',
+                            fontSize: '0.8rem',
+                            color: 'var(--primary-color)',
+                            marginBottom: '2rem',
+                            fontWeight: 700,
+                            letterSpacing: '0.05em'
                         }}>
-                            <Github size={20} /> View on GitHub
-                        </a>
-                        {release ? (
-                            <a href={release.url} style={{
-                                padding: '0.8rem 2rem',
-                                borderRadius: '0.75rem',
-                                background: '#fff',
-                                color: '#000',
-                                textDecoration: 'none',
-                                fontWeight: 700,
-                                display: 'flex', alignItems: 'center', gap: '0.5rem'
-                            }}>
-                                <Download size={20} /> Download {release.version}
+                            CASE STUDY: PRODUCTIVITY
+                        </div>
+
+                        <h1 className="font-lobster" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', marginBottom: '1.5rem', color: 'var(--primary-color)' }}>
+                            Bite Launcher
+                        </h1>
+
+                        <p style={{
+                            fontSize: '1.25rem',
+                            maxWidth: '700px',
+                            color: 'var(--text-secondary)',
+                            marginBottom: '3rem',
+                            lineHeight: 1.6
+                        }}>
+                            An intelligent, extensible launcher for developers. <br />
+                            Search files, execute scripts, and manage your system from a single bar.
+                        </p>
+
+                        <div style={{
+                            width: '100%',
+                            maxWidth: '900px',
+                            background: 'var(--surface-color)',
+                            borderRadius: '1.5rem',
+                            border: '1px solid var(--border-color)',
+                            padding: '1rem',
+                            marginBottom: '4rem',
+                            boxShadow: '0 40px 100px -20px rgba(0,0,0,0.5)',
+                            backdropFilter: 'blur(20px)'
+                        }}>
+                            <img
+                                src={`${import.meta.env.BASE_URL}examples/bite/bite-banner.png`}
+                                alt="Bite Banner"
+                                style={{ width: '100%', borderRadius: '1rem', display: 'block' }}
+                            />
+                        </div>
+
+                        <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <a href="https://github.com/Ghua8088/py-cast" target="_blank" className="btn btn-primary" style={{ padding: '0.8rem 2.5rem' }}>
+                                <Github size={18} /> View Repository
                             </a>
-                        ) : (
-                            <a href="#install" style={{
-                                padding: '0.8rem 2rem',
-                                borderRadius: '0.75rem',
-                                background: 'rgba(255,255,255,0.05)',
-                                color: 'white',
-                                textDecoration: 'none',
-                                fontWeight: 600,
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                display: 'flex', alignItems: 'center', gap: '0.5rem'
-                            }}>
-                                <Terminal size={18} /> Beta Access
-                            </a>
-                        )}
-                    </div>
-                </motion.div>
+                            {release && (
+                                <a href={release.url} className="btn btn-secondary" style={{ padding: '0.8rem 2.5rem' }}>
+                                    <Download size={18} /> Download {release.version}
+                                </a>
+                            )}
+                        </div>
+                    </motion.div>
+                </div>
             </section>
 
-            {/* Interactive Mockup */}
-            <section style={{ padding: '0 2rem 6rem', display: 'flex', justifyContent: 'center' }}>
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3, duration: 0.8 }}
-                    style={{
-                        width: '100%',
-                        maxWidth: '700px',
-                        background: 'rgba(22, 22, 23, 0.8)',
-                        backdropFilter: 'blur(20px)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        borderRadius: '12px',
-                        boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)',
-                        overflow: 'hidden'
-                    }}
-                >
-                    {/* Mock Search Bar */}
-                    <div style={{ padding: '16px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)', display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <Search size={22} color="#5e5ce6" />
-                        <div style={{ fontSize: '18px', color: '#a1a1aa', fontWeight: 500 }}>Compare Pytron vs Electron...</div>
-                        <div style={{ marginLeft: 'auto', display: 'flex', gap: '8px' }}>
-                            <div style={{ background: 'rgba(255,255,255,0.1)', padding: '2px 6px', borderRadius: '4px', fontSize: '10px', fontWeight: 700, color: '#a1a1aa' }}>CPU 1%</div>
-                        </div>
+            {/* Implementation Details */}
+            <section className="container" style={{ paddingBottom: '8rem' }}>
+                <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+                    <h2 style={{ fontSize: '2rem', marginBottom: '2rem', fontWeight: 800 }}>How it's built</h2>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+                        Bite leverages <strong>Pytron-kit's native bridge</strong> to perform high-speed file system indexing in Python while maintaining a 60FPS blurred interface using modern web technologies.
+                    </p>
+                    
+                    <Callout title="Technical Highlight" type="info">
+                        The application uses a <strong>Zero-Copy binary bridge</strong> to stream file icons from the OS directly to the frontend without any Base64 encoding overhead.
+                    </Callout>
+
+                    <div style={{ marginTop: '4rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+                        <FeatureCard 
+                            icon={<Cpu size={24} />} 
+                            title="Python Core" 
+                            desc="Handles heavy tasks like regex file searching, system power commands, and custom script execution." 
+                        />
+                        <FeatureCard 
+                            icon={<Layout size={24} />} 
+                            title="Web UI" 
+                            desc="A minimalist, keyboard-driven interface with instant feedback and smooth animations." 
+                        />
                     </div>
-                    {/* Mock Results */}
-                    <div style={{ padding: '8px' }}>
-                        <MockItem icon={<Terminal size={20} />} title="Terminal" desc="Launch PowerShell" active={true} />
-                        <MockItem icon={<Github size={20} />} title="Search GitHub" desc="Search repositories..." />
-                        <MockItem icon={<Zap size={20} />} title="Kill Python Processes" desc="System Command" />
-                    </div>
-                    {/* Mock Footer */}
-                    <div style={{ padding: '8px 16px', background: 'rgba(255,255,255,0.03)', borderTop: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'space-between', fontSize: '10px', color: '#555' }}>
-                        <span>Bite v0.3.0</span>
-                        <span><span style={{ background: 'rgba(255,255,255,0.1)', padding: '2px 4px', borderRadius: '3px' }}>Alt</span> + <span style={{ background: 'rgba(255,255,255,0.1)', padding: '2px 4px', borderRadius: '3px' }}>B</span> to Toggle</span>
-                    </div>
-                </motion.div>
+                </div>
             </section>
 
             {/* Features Grid */}
-            <section style={{ padding: '4rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
-                <h2 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '2.5rem' }}>Supercharge your workflow.</h2>
+            <section className="container" style={{ paddingBottom: '8rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }}>Capabilities</h2>
+                </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                    <FeatureCard icon={<Search color="#5e5ce6" />} title="Deep File Search" desc="Recursively search directories instantly. Supports Regex patterns for power users." />
-                    <FeatureCard icon={<Command color="#f472b6" />} title="System Control" desc="Sleep, Shutdown, Lock, or toggle Dark Mode directly from the keyboard." />
-                    <FeatureCard icon={<Terminal color="#34d399" />} title="Scriptable" desc="Add your own Python scripts as shortcuts. If it runs in Python, it runs in Bite." />
-                    <FeatureCard icon={<Download color="#fbbf24" />} title="Self Updating" desc="Auto-updates in the background so you are always on the latest version." />
-                    <FeatureCard icon={<Layers color="#60a5fa" />} title="Clipboard History" desc="Never lose a snippet again. Search and paste from your last 50 copies." />
-                    <FeatureCard icon={<Zap color="#f87171" />} title="Instant Calculator" desc="Evaluate complex math expressions directly in the search bar." />
+                    <FeatureCard icon={<Search />} title="Deep File Search" desc="Recursively search directories instantly. Supports Regex patterns for power users." />
+                    <FeatureCard icon={<Command />} title="System Control" desc="Sleep, Shutdown, Lock, or toggle Dark Mode directly from the keyboard." />
+                    <FeatureCard icon={<Terminal />} title="Scriptable" desc="Add your own Python scripts as shortcuts. If it runs in Python, it runs in Bite." />
+                    <FeatureCard icon={<Download />} title="Self Updating" desc="Auto-updates in the background so you are always on the latest version." />
+                    <FeatureCard icon={<Layers />} title="Clipboard History" desc="Never lose a snippet again. Search and paste from your last 50 copies." />
+                    <FeatureCard icon={<Zap />} title="Instant Calculator" desc="Evaluate complex math expressions directly in the search bar." />
                 </div>
             </section>
 
-            {/* Installation */}
-            <section id="install" style={{ padding: '4rem 2rem', maxWidth: '900px', margin: '0 auto' }}>
-                <div style={{ background: '#09090b', padding: '3rem', borderRadius: '1.5rem', border: '1px solid #27272a' }}>
-                    <h2 style={{ marginBottom: '1.5rem' }}>Installation</h2>
-                    <p style={{ color: '#a1a1aa', marginBottom: '2rem' }}>Bite is open source. Clone, build, and run it locally.</p>
-
-                    <CodeBlock code={`# 1. Clone the repository
-git clone https://github.com/Ghua8088/py-cast.git
-
-# 2. Install Pytron Kit
-pip install pytron-kit
-pytron install
-
-# 3. Run the App
-python app.py`} />
-
-                    <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                        <Star size={18} fill="#fbbf24" color="#fbbf24" />
-                        <span style={{ color: '#fff', fontSize: '0.9rem' }}>Star us on GitHub if you like it!</span>
-                    </div>
-                </div>
-            </section>
-
+            <footer style={{ padding: '4rem 2rem', textAlign: 'center', borderTop: '1px solid var(--border-color)' }}>
+                <Link to="/examples" style={{ color: 'var(--primary-color)', fontWeight: 600, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                    <Layout size={18} /> Back to Showcase
+                </Link>
+            </footer>
         </div>
     );
-}
-
-function MockItem({ icon, title, desc, active }) {
-    return (
-        <div style={{
-            display: 'flex', alignItems: 'center', gap: '12px',
-            padding: '10px 14px',
-            borderRadius: '8px',
-            background: active ? '#5e5ce6' : 'transparent',
-            marginBottom: '4px'
-        }}>
-            <div style={{ color: active ? 'white' : '#a1a1aa', opacity: active ? 1 : 0.7 }}>{icon}</div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <span style={{ fontWeight: 600, fontSize: '14px', color: active ? 'white' : '#e4e4e7' }}>{title}</span>
-                <span style={{ fontSize: '11px', color: active ? 'rgba(255,255,255,0.7)' : '#71717a' }}>{desc}</span>
-            </div>
-        </div>
-    )
 }
 
 function FeatureCard({ icon, title, desc }) {
     return (
         <motion.div
             whileHover={{ y: -5 }}
-            style={{
-                background: 'rgba(255,255,255,0.03)',
-                border: '1px solid rgba(255,255,255,0.05)',
-                padding: '2rem',
-                borderRadius: '1rem'
-            }}
+            className="feature-card"
+            style={{ padding: '2.5rem' }}
         >
-            <div style={{ marginBottom: '1rem' }}>{icon}</div>
-            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>{title}</h3>
-            <p style={{ color: '#a1a1aa', fontSize: '0.95rem', lineHeight: 1.5 }}>{desc}</p>
+            <div style={{ color: 'var(--primary-color)', marginBottom: '1.5rem' }}>{icon}</div>
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', fontWeight: 700 }}>{title}</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>{desc}</p>
         </motion.div>
-    )
-}
-
-function CodeBlock({ code }) {
-    return (
-        <pre style={{
-            background: '#000',
-            padding: '1.5rem',
-            borderRadius: '0.75rem',
-            border: '1px solid #333',
-            overflowX: 'auto',
-            fontFamily: 'monospace',
-            fontSize: '0.9rem',
-            lineHeight: 1.6,
-            color: '#a5b4fc'
-        }}>
-            {code}
-        </pre>
     )
 }

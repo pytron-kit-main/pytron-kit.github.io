@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Github } from 'lucide-react';
+import Search from './Search';
 
 export default function Navbar() {
   return (
@@ -9,33 +10,52 @@ export default function Navbar() {
       left: 0,
       right: 0,
       height: 'var(--header-height)',
-      background: 'rgba(5, 5, 5, 0.8)',
-      backdropFilter: 'blur(10px)',
+      background: 'rgba(9, 9, 11, 0.7)',
+      backdropFilter: 'blur(16px)',
       borderBottom: '1px solid var(--border-color)',
       zIndex: 1000,
       display: 'flex',
-      alignItems: 'center',
-      padding: '0 2rem'
+      alignItems: 'center'
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
-        <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '10px', color: 'white', fontWeight: 'bold', fontSize: '1.2rem' }}>
+        <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'white', fontWeight: 700, fontSize: '1.25rem', letterSpacing: '0.02em' }}>
           <img
-            src={`${import.meta.env.BASE_URL}pytron-banner.png`}
-            alt="Pytron"
-            style={{ height: '60px' }}
+            src={`${import.meta.env.BASE_URL}pytron.png`}
+            alt="Pytron-kit"
+            style={{ height: '32px', width: '32px' }}
             decoding="async"
             loading="eager"
           />
+          <span className="font-lobster" style={{ color: 'var(--primary-color)', textShadow: '0 0 20px rgba(6, 182, 212, 0.3)' }}>Pytron-kit</span>
         </Link>
 
-        {/* Desktop Links (Hidden on Mobile via CSS) */}
-        <div className="nav-links">
-          <Link to="/docs" style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>Documentation</Link>
-          <Link to="/examples" style={{ color: 'var(--text-secondary)', fontWeight: 500 }}>Examples</Link>
-          <a href="https://github.com/Ghua8088/pytron" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Github size={20} />
-            GitHub
-          </a>
+        <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1, justifyContent: 'flex-end' }}>
+          <Search />
+          <div className="desktop-only" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ height: '16px', width: '1px', background: 'var(--border-color)', margin: '0 0.5rem' }} />
+            <Link to="/docs" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Docs</Link>
+            <Link to="/examples" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500, transition: 'color 0.2s' }}>Examples</Link>
+            <a 
+              href="https://github.com/Ghua8088/pytron" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ 
+                color: 'var(--text-primary)', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '0.5rem',
+                fontSize: '0.9rem',
+                fontWeight: 500,
+                background: 'rgba(255,255,255,0.05)',
+                padding: '0.4rem 0.8rem',
+                borderRadius: '8px',
+                border: '1px solid var(--border-color)'
+              }}
+            >
+              <Github size={18} />
+              GitHub
+            </a>
+          </div>
         </div>
       </div>
     </nav>
